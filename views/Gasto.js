@@ -4,8 +4,6 @@ import { useState } from "react";
 import {
   NativeBaseProvider,
   Box,
-  Popover,
-  Button,
   Center,
   HStack,
   Heading,

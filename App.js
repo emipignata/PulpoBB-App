@@ -1,5 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 /* import { registerRootComponent } from 'expo'; */
 import ListaCuidadores from "./views/ListaCuidadores";
 import Signin from "./views/Signin";
@@ -12,6 +14,7 @@ import Tarea from "./views/Tarea";
 import Gasto from "./views/Gasto";
 import ListaGastos from "./views/ListaGastos";
 import Pulpo from "./views/Pulpo";
+import Home from "./views/Home";
 // **********************************************************
 // apaga el WARNING
 import { LogBox } from "react-native";
@@ -19,31 +22,27 @@ import { LogBox } from "react-native";
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 // **********************************************************
 
-import {
-  NativeBaseProvider,
-  Box,
-  
-} from "native-base";
-
+import { NativeBaseProvider, Box } from "native-base";
+const Stack = createNativeStackNavigator();
+// options={{headerShown: false}}
 export default function App() {
   return (
-    <NativeBaseProvider>
-      <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
+    <NavigationContainer>
+      <Stack.Navigator>
         {/* <MenuH /> */}
-        {/*  <ListaCuidadores /> */}
-       {/*   <ListaTareas /> */}
-        {/* <ListaPulpos /> */}
-        {/* <ListaGastos /> */}
-        {/* <Signin/> */}
-        {/* <Login/> */}
-        <Persona/>
-        {/* <Tarea/> */}
-        {/* <Gasto/> */}
-       {/*  <Pulpo/> */}
-       {/*  <Home/> */}
-
-      </Box>
-    </NativeBaseProvider>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="ListaCuidadores" component={ListaCuidadores} />
+        <Stack.Screen name="ListaTareas" component={ListaTareas} />
+        <Stack.Screen name="ListaPulpos" component={ListaPulpos} />
+        <Stack.Screen name="ListaGastos" component={ListaGastos} />
+        <Stack.Screen name="Signin" component={Signin} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Persona" component={Persona} />
+        <Stack.Screen name="Tarea" component={Tarea} />
+        <Stack.Screen name="Gasto" component={Gasto} />
+        <Stack.Screen name="Pulpo" component={Pulpo} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 

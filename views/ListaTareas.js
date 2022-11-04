@@ -15,7 +15,7 @@ import {
 } from "native-base";
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
-export default function ListaTareas() {
+export default function ListaTareas({navigation}) {
   const instState = [
     {
       title: "Code",

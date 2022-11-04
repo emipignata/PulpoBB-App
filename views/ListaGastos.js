@@ -13,7 +13,7 @@ import {
   Avatar,
 } from "native-base";
 
-export default function ListaGastos() {
+export default function ListaGastos({navigation}) {
   const data = [
     {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",

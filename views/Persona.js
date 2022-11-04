@@ -4,33 +4,16 @@ import { StyleSheet, Text, View } from "react-native";
 import {
   NativeBaseProvider,
   Box,
-  Popover,
-  Button,
   Center,
-  Tooltip,
-  Pressable,
   HStack,
-  Badge,
-  Spacer,
-  Flex,
   Heading,
-  VStack,
-  FormControl,
-  Input,
-  Link,
   Image,
-  Icon,
-  FlatList,
-  Avatar,
-  Menu,
-  HamburgerIcon,
   AspectRatio,
   Stack
 } from "native-base";
-import { useState } from "react";
 
 //Atributos const[]=useState{}
-const[rol,setRol]=useState()
+/* const[rol,setRol]=useState()
 const[idCuidador,setIdCuidador]=useState()
 const[listaIdPulposBb,setListaIdPulposBb]=useState()
 const[listaIdTareas,setListaIdTareas]=useState()
@@ -40,7 +23,7 @@ const[descripcion,setDescripcion]=useState()
 const[mail,setMail]=useState()
 const[password,setPassword]=useState()
 const[fechaNacimiento,setFechaNacimientno]=useState()
-
+ */
 
 
 export default function Persona() {

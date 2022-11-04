@@ -7,36 +7,22 @@ import {
   Popover,
   Button,
   Center,
-  Tooltip,
-  Pressable,
   HStack,
-  Badge,
-  Spacer,
-  Flex,
   Heading,
-  VStack,
-  FormControl,
-  Input,
-  Link,
   Image,
-  Icon,
-  FlatList,
-  Avatar,
-  Menu,
-  HamburgerIcon,
   AspectRatio,
   Stack
 } from "native-base";
 
 //Atributos const[]=useState{}
-
+/* 
 const[idPulpo,setIdPulpo]=useState()
 const[idGasto,setIdGasto]=useState()
 const[idCreadorGasto,setIdCreadorGasto]=useState()
 const[descripcion,setDescripcion]=useState()
 const[monto,setMonto]=useState()
 const[fechaCreacion,setFechaCreacion]=useState()
-const[estaSaldado,setEstaSaldado]=useState()
+const[estaSaldado,setEstaSaldado]=useState() */
 
 
 

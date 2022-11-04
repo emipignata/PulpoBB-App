@@ -3,21 +3,11 @@ import { StyleSheet, Text, View } from "react-native";
 import {
   NativeBaseProvider,
   Box,
-  Popover,
   Button,
-  Center,
-  Tooltip,
-  Pressable,
-  HStack,
-  Badge,
-  Spacer,
-  Flex,
   Heading,
   VStack,
   FormControl,
   Input,
-  Link,
-  Icon,
   Image,
 } from "native-base";
 

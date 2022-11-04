@@ -5,31 +5,13 @@ import * as React from 'react';
 import {
   NativeBaseProvider,
   Box,
-  Popover,
-  Button,
-  Center,
-  Tooltip,
-  Pressable,
   HStack,
-  Badge,
-  Spacer,
-  Flex,
   Heading,
   VStack,
-  FormControl,
   Input,
-  Link,
-  Image,
   Icon,
-  FlatList,
-  Avatar,
-  Menu,
-  HamburgerIcon,
   IconButton,
-  Feather,
   Checkbox,
-  Entypo
-
 } from "native-base";
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
 

@@ -9,7 +9,6 @@ import {
   Spacer,
   Heading,
   VStack,
-  Image,
   FlatList,
   Avatar,
 } from "native-base";

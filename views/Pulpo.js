@@ -4,40 +4,22 @@ import { useState } from "react";
 import {
   NativeBaseProvider,
   Box,
-  Popover,
   Button,
-  Center,
-  Tooltip,
-  Pressable,
-  HStack,
-  Badge,
-  Spacer,
-  Flex,
   Heading,
   VStack,
-  FormControl,
-  Input,
-  Link,
-  Image,
-  Icon,
-  FlatList,
   Avatar,
-  Menu,
-  HamburgerIcon,
-  AspectRatio,
-  Stack,
 } from "native-base";
 
 //Atributos const[]=useState{}
 
-const[listaIdCuidadores,setlistaIdCuidadores]=useState()
-const[listaIdTareas,setlistaIdTareas]=useState()
-const[idPulpo,setIdPulpo]=useState()
-const[nombre,setNombre]=useState()
-const[apellido,setApellido]=useState()
-const[descripcion,setDescripcion]=useState()
-const[listaIdGastos,setListaIdGastos]=useState()
-const[fechaNacimiento,setFechaNacimientno]=useState()
+/* const [listaIdCuidadores,setlistaIdCuidadores]=useState()
+const [listaIdTareas,setlistaIdTareas]=useState()
+const [idPulpo,setIdPulpo]=useState()
+const [nombre,setNombre]=useState()
+const [apellido,setApellido]=useState()
+const [descripcion,setDescripcion]=useState()
+const [listaIdGastos,setListaIdGastos]=useState()
+const [fechaNacimiento,setFechaNacimientno]=useState() */
 
 export default function Pulpo() {
   return (

@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import * as React from "react";
+/* import { registerRootComponent } from 'expo'; */
 import ListaCuidadores from "./views/ListaCuidadores";
 import Signin from "./views/Signin";
 import Login from "./views/Login";
@@ -30,16 +30,17 @@ export default function App() {
     <NativeBaseProvider>
       <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
         {/* <MenuH /> */}
-         <ListaCuidadores />
-        {/*  <ListaTareas /> */}
+        {/*  <ListaCuidadores /> */}
+       {/*   <ListaTareas /> */}
         {/* <ListaPulpos /> */}
         {/* <ListaGastos /> */}
         {/* <Signin/> */}
         {/* <Login/> */}
-        {/* <Persona/> */}
+        <Persona/>
         {/* <Tarea/> */}
         {/* <Gasto/> */}
        {/*  <Pulpo/> */}
+       {/*  <Home/> */}
 
       </Box>
     </NativeBaseProvider>

@@ -12,14 +12,14 @@ import {
 
 //Atributos const[]=useState{}
 
-const[idPulpo,setIdPulpo]=useState()
+/* const[idPulpo,setIdPulpo]=useState()
 const[idTarea,setIdTarea]=useState()
 const[idCreadorTarea,setIdCreadorTarea]=useState()
 const[idPersonaAsignada,setIdPersonaAsignada]=useState()
 const[descripcion,setDescripcion]=useState()
 const[estaFinalizada,setEstaFinalizada]=useState()
 const[fechaCreacion,setFechaCreacion]=useState()
-const[fechaVencimiento,setFechaVencimiento]=useState()
+const[fechaVencimiento,setFechaVencimiento]=useState() */
 
 export default function Tarea() {
   return (

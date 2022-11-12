@@ -12,20 +12,6 @@ import {
   Stack
 } from "native-base";
 
-//Atributos const[]=useState{}
-/* const[rol,setRol]=useState()
-const[idCuidador,setIdCuidador]=useState()
-const[listaIdPulposBb,setListaIdPulposBb]=useState()
-const[listaIdTareas,setListaIdTareas]=useState()
-const[nombre,setNombre]=useState()
-const[apellido,setApellido]=useState()
-const[descripcion,setDescripcion]=useState()
-const[mail,setMail]=useState()
-const[password,setPassword]=useState()
-const[fechaNacimiento,setFechaNacimientno]=useState()
- */
-
-
 export default function Persona() {
   return (
     <NativeBaseProvider>

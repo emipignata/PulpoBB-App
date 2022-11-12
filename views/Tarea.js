@@ -1,27 +1,22 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {getTareas} from "../services/Tareas"
 import {
   NativeBaseProvider,
   Box,
   HStack,
   Heading,
   Stack,
-  Switch
+  Switch,
+  Button
 } from "native-base";
 
-//Atributos const[]=useState{}
-
-/* const[idPulpo,setIdPulpo]=useState()
-const[idTarea,setIdTarea]=useState()
-const[idCreadorTarea,setIdCreadorTarea]=useState()
-const[idPersonaAsignada,setIdPersonaAsignada]=useState()
-const[descripcion,setDescripcion]=useState()
-const[estaFinalizada,setEstaFinalizada]=useState()
-const[fechaCreacion,setFechaCreacion]=useState()
-const[fechaVencimiento,setFechaVencimiento]=useState() */
-
-export default function Tarea() {
+// los dastos estan en API y nosotros los consumimos para tenerlos en la lista---->ES ASI?????
+//lo manejamos con state y effect?? 
+//const [tareas,setTareas]=useState(tareas)
+//useEffect(()=>{setTareas(()=>{getTareas})},tareas)
+export default function Tarea({navigation}) {
   return (
     <NativeBaseProvider>
       <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
@@ -34,6 +29,7 @@ export default function Tarea() {
     }} _light={{
       backgroundColor: "gray.50"
     }}>
+       
         
         <Stack p="4" space={3}>
           <Stack space={2}>

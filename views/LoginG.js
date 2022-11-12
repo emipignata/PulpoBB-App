@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import * as Google from 'expo-auth-session/providers/google'
 import {
   NativeBaseProvider,
   Box,
@@ -21,7 +22,7 @@ export default function LoginG({ navigation }) {
         success
         margin={1}
         onPress={() => {
-          navigation.navigate("ListaCuidadores");
+          promptAsync();
         }}
       >
         <Text>Logeate con Google</Text>

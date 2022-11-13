@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 import {
   NativeBaseProvider,
@@ -13,7 +13,7 @@ import {
   Avatar,
 } from "native-base";
 
-export default function ListaGastos({navigation}) {
+export default function ListaGastos({ navigation }) {
   const data = [
     {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
@@ -42,21 +42,14 @@ export default function ListaGastos({navigation}) {
       id: "68694a0f-3da1-431f-bd56-142371e29d72",
       fullName: "Libritos",
       timeStamp: "",
-      recentText:  "$6.543",
+      recentText: "$6.543",
       avatarUrl:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr01zI37DYuR8bMV5exWQBSw28C1v_71CAh8d7GP1mplcmTgQA6Q66Oo--QedAN1B4E1k&usqp=CAU",
     },
   ];
   return (
     <NativeBaseProvider>
-      <Box
-        flex={1}
-        bg="#fff"
-        justifyContent="center"
-        margin={10}
-      >
-     
-        
+      <Box flex={1} bg="#fff" justifyContent="center" margin={10}>
         <Heading fontSize="xl" p="4" pb="3">
           Lista de Gastos
         </Heading>
@@ -81,6 +74,12 @@ export default function ListaGastos({navigation}) {
                   }}
                 />
                 <VStack>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                      navigation.navigate("Gasto");
+                    }}
+                  >
                   <Text
                     _dark={{
                       color: "warmGray.50",
@@ -90,6 +89,13 @@ export default function ListaGastos({navigation}) {
                   >
                     {item.fullName}
                   </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                      navigation.navigate("Gasto");
+                    }}
+                  >
                   <Text
                     color="coolGray.600"
                     _dark={{
@@ -98,8 +104,15 @@ export default function ListaGastos({navigation}) {
                   >
                     {item.recentText}
                   </Text>
+                  </TouchableOpacity>
                 </VStack>
                 <Spacer />
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                      navigation.navigate("Gasto");
+                    }}
+                  >
                 <Text
                   fontSize="xs"
                   _dark={{
@@ -110,19 +123,22 @@ export default function ListaGastos({navigation}) {
                 >
                   {item.timeStamp}
                 </Text>
+                </TouchableOpacity>
               </HStack>
             </Box>
           )}
           keyExtractor={(item) => item.id}
         />
         <Box margin={5}>
-          <Button success margin={1}
-          onPress={() => {
-            //ACA TENEMOS QUE HACER EL PUSH A LA API Y AGREGAR UN GASTO O IR A UNA PANTALLA DDE METES LOS CAMPOS Y AGREGAS
-          }}>
+          <Button
+            success
+            margin={1}
+            onPress={() => {
+              //ACA TENEMOS QUE HACER EL PUSH A LA API Y AGREGAR UN GASTO O IR A UNA PANTALLA DDE METES LOS CAMPOS Y AGREGAS
+            }}
+          >
             <Text>Agregar Gasto</Text>
           </Button>
-          
         </Box>
       </Box>
     </NativeBaseProvider>

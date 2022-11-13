@@ -1,5 +1,4 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 import {
   NativeBaseProvider,
@@ -14,7 +13,7 @@ import {
   Avatar,
 } from "native-base";
 
-export default function ListaCuidadores({navigation}) {
+export default function ListaCuidadores({ navigation }) {
   const data = [
     {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
@@ -57,7 +56,6 @@ export default function ListaCuidadores({navigation}) {
         justifyContent="center"
         margin={20}
       >
-     
         <Image
           size={150}
           borderRadius={100}
@@ -90,48 +88,70 @@ export default function ListaCuidadores({navigation}) {
                   }}
                 />
                 <VStack>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                      navigation.navigate("Persona");
+                    }}
+                  >
+                    <Text
+                      _dark={{
+                        color: "warmGray.50",
+                      }}
+                      color="coolGray.800"
+                      bold
+                    >
+                      {item.fullName}
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                      navigation.navigate("Persona");
+                    }}
+                  >
+                    <Text
+                      color="coolGray.600"
+                      _dark={{
+                        color: "warmGray.200",
+                      }}
+                    >
+                      {item.recentText}
+                    </Text>
+                  </TouchableOpacity>
+                </VStack>
+                <Spacer />
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => {
+                    navigation.navigate("Persona");
+                  }}
+                >
                   <Text
+                    fontSize="xs"
                     _dark={{
                       color: "warmGray.50",
                     }}
                     color="coolGray.800"
-                    bold
+                    alignSelf="flex-start"
                   >
-                    {item.fullName}
+                    {item.timeStamp}
                   </Text>
-                  <Text
-                    color="coolGray.600"
-                    _dark={{
-                      color: "warmGray.200",
-                    }}
-                  >
-                    {item.recentText}
-                  </Text>
-                </VStack>
-                <Spacer />
-                <Text
-                  fontSize="xs"
-                  _dark={{
-                    color: "warmGray.50",
-                  }}
-                  color="coolGray.800"
-                  alignSelf="flex-start"
-                >
-                  {item.timeStamp}
-                </Text>
+                </TouchableOpacity>
               </HStack>
             </Box>
           )}
           keyExtractor={(item) => item.id}
         />
-        <Box margin={5}
-        onPress={() => {
-          //ACA TENEMOS QUE HACER EL PUSH A LA API Y AGREGAR UN CUIDADOR O IR A UNA PANTALLA DDE METES LOS CAMPOS Y AGREGAS
-        }}>
+        <Box
+          margin={5}
+          onPress={() => {
+            //ACA TENEMOS QUE HACER EL PUSH A LA API Y AGREGAR UN CUIDADOR O IR A UNA PANTALLA DDE METES LOS CAMPOS Y AGREGAS
+          }}
+        >
           <Button success margin={1}>
             <Text>Agregar Cuidador</Text>
           </Button>
-          
         </Box>
       </Box>
     </NativeBaseProvider>

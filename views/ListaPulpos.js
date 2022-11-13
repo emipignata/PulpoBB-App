@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 import {
   NativeBaseProvider,
@@ -90,6 +90,12 @@ export default function ListaPulpos({navigation}) {
                   }}
                 />
                 <VStack>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => {
+                    navigation.navigate("Pulpo");
+                  }}
+                >
                   <Text
                     _dark={{
                       color: "warmGray.50",
@@ -99,6 +105,13 @@ export default function ListaPulpos({navigation}) {
                   >
                     {item.fullName}
                   </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => {
+                    navigation.navigate("Pulpo");
+                  }}
+                >
                   <Text
                     color="coolGray.600"
                     _dark={{
@@ -107,8 +120,15 @@ export default function ListaPulpos({navigation}) {
                   >
                     {item.recentText}
                   </Text>
+                  </TouchableOpacity>
                 </VStack>
                 <Spacer />
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => {
+                    navigation.navigate("Pulpo");
+                  }}
+                >
                 <Text
                   fontSize="xs"
                   _dark={{
@@ -119,6 +139,7 @@ export default function ListaPulpos({navigation}) {
                 >
                   {item.timeStamp}
                 </Text>
+                </TouchableOpacity>
               </HStack>
             </Box>
           )}

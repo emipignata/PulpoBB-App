@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { useToast } from "native-base";
 import * as React from "react";
 import {
@@ -118,22 +118,30 @@ export default function ListaTareas({ navigation }) {
                     onChange={() => handleStatusChange(itemI)}
                     value={item.title}
                   ></Checkbox>
-                  <Text
-                    width="100%"
-                    flexShrink={1}
-                    textAlign="left"
-                    mx="2"
-                    strikeThrough={item.isCompleted}
-                    _light={{
-                      color: item.isCompleted ? "gray.400" : "coolGray.800",
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                      navigation.navigate("Tarea");
                     }}
-                    _dark={{
-                      color: item.isCompleted ? "gray.400" : "coolGray.50",
-                    }}
-                    onPress={() => handleStatusChange(itemI)}
                   >
-                    {item.title}
-                  </Text>
+                    <Text
+                      width="100%"
+                      flexShrink={1}
+                      textAlign="left"
+                      mx="2"
+                      strikeThrough={item.isCompleted}
+                      _light={{
+                        color: item.isCompleted ? "gray.400" : "coolGray.800",
+                      }}
+                      _dark={{
+                        color: item.isCompleted ? "gray.400" : "coolGray.50",
+                      }}
+                      onPress={() => handleStatusChange(itemI)}
+                    >
+                      {item.title}
+                    </Text>
+                  </TouchableOpacity>
+
                   <IconButton
                     size="sm"
                     colorScheme="trueGray"
@@ -156,3 +164,11 @@ export default function ListaTareas({ navigation }) {
     </NativeBaseProvider>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});

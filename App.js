@@ -1,13 +1,10 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useState } from "react";
-import Tareas from "./services/Tareas";
 import ListaCuidadores from "./views/ListaCuidadores";
 import Signin from "./views/Signin";
 import Login from "./views/Login";
-import MenuH from "./views/MenuH";
 import Persona from "./views/Persona";
 import ListaTareas from "./views/ListaTareas";
 import ListaPulpos from "./views/ListaPulpos";
@@ -17,8 +14,7 @@ import ListaGastos from "./views/ListaGastos";
 import Pulpo from "./views/Pulpo";
 import Home from "./views/Home";
 import LoginG from "./views/LoginG";
-import { createContext } from "react";
-//import * as Google from 'expo-auth-session/providers/google'
+import * as Google from "expo-auth-session/providers/google";
 
 // **********************************************************
 // apaga el WARNING
@@ -26,10 +22,8 @@ import { LogBox } from "react-native";
 
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 // **********************************************************
-
-import { NativeBaseProvider, Box } from "native-base";
 const Stack = createNativeStackNavigator();
-// options={{headerShown: false}}
+//const MyContext = React.createContext();
 
 export default function App() {
   const [authData, setAuthData] = useState(true);

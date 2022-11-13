@@ -125,7 +125,10 @@ export default function ListaPulpos({navigation}) {
           keyExtractor={(item) => item.id}
         />
         <Box margin={5}>
-          <Button success margin={1}>
+          <Button success margin={1}
+           onPress={() => {
+            //ACA TENEMOS QUE HACER EL PUSH A LA API Y AGREGAR UN PULPO O IR A UNA PANTALLA DDE METES LOS CAMPOS Y AGREGAS
+          }}>
             <Text>Agregar un nuevo PulpoBB</Text>
           </Button>
           

@@ -1,16 +1,8 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import {
   NativeBaseProvider,
   Box,
   Button,
-  HStack,
-  Spacer,
-  Heading,
-  VStack,
-  Image,
-  FlatList,
-  Avatar,
 } from "native-base";
 
 export default function Home({ navigation }) {

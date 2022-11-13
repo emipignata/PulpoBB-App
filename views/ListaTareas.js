@@ -1,7 +1,6 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { useToast } from "native-base";
-import * as React from 'react';
+import * as React from "react";
 import {
   NativeBaseProvider,
   Box,
@@ -13,9 +12,9 @@ import {
   IconButton,
   Checkbox,
 } from "native-base";
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
-export default function ListaTareas({navigation}) {
+export default function ListaTareas({ navigation }) {
   const instState = [
     {
       title: "Code",
@@ -75,33 +74,84 @@ export default function ListaTareas({navigation}) {
   return (
     <NativeBaseProvider>
       <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
-      <Box maxW="300" w="100%">
-        <Heading mb="3" size="md">
-          Agrega tareas para que tu PulpoBB siempre esté a gusto:
-        </Heading>
-        <VStack space={4}>
-          <HStack space={2}>
-            <Input flex={1} onChangeText={v => setInputValue(v)} value={inputValue} placeholder="Agrega tu Tarea" />
-            <IconButton borderRadius="lg" variant="solid" icon={<Icon as={Ionicons} name="add-circle-outline" size="lg" color="warmGray.50" />} onPress={() => {
-            addItem(inputValue);
-            setInputValue("");
-          }} />
-          </HStack>
-          <VStack space={2}>
-            {list.map((item, itemI) => <HStack w="100%" justifyContent="space-between" alignItems="center" key={item.title + itemI.toString()}>
-                <Checkbox aria-label="checked" isChecked={item.isCompleted} onChange={() => handleStatusChange(itemI)} value={item.title}></Checkbox>
-                <Text width="100%" flexShrink={1} textAlign="left" mx="2" strikeThrough={item.isCompleted} _light={{
-              color: item.isCompleted ? "gray.400" : "coolGray.800"
-            }} _dark={{
-              color: item.isCompleted ? "gray.400" : "coolGray.50"
-            }} onPress={() => handleStatusChange(itemI)}>
-                  {item.title}
-                </Text>
-                <IconButton size="sm" colorScheme="trueGray" icon={<Icon as={Ionicons} name="trash" size="xs" color="trueGray.400" />} onPress={() => handleDelete(itemI)} />
-              </HStack>)}
+        <Box maxW="300" w="100%">
+          <Heading mb="3" size="md">
+            Agrega tareas para que tu PulpoBB siempre esté a gusto:
+          </Heading>
+          <VStack space={4}>
+            <HStack space={2}>
+              <Input
+                flex={1}
+                onChangeText={(v) => setInputValue(v)}
+                value={inputValue}
+                placeholder="Agrega tu Tarea"
+              />
+              <IconButton
+                borderRadius="lg"
+                variant="solid"
+                icon={
+                  <Icon
+                    as={Ionicons}
+                    name="add-circle-outline"
+                    size="lg"
+                    color="warmGray.50"
+                  />
+                }
+                onPress={() => {
+                  addItem(inputValue);
+                  setInputValue("");
+                  //ACA deberiamos enviar a la API la tarea tambien!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                }}
+              />
+            </HStack>
+            <VStack space={2}>
+              {list.map((item, itemI) => (
+                <HStack
+                  w="100%"
+                  justifyContent="space-between"
+                  alignItems="center"
+                  key={item.title + itemI.toString()}
+                >
+                  <Checkbox
+                    aria-label="checked"
+                    isChecked={item.isCompleted}
+                    onChange={() => handleStatusChange(itemI)}
+                    value={item.title}
+                  ></Checkbox>
+                  <Text
+                    width="100%"
+                    flexShrink={1}
+                    textAlign="left"
+                    mx="2"
+                    strikeThrough={item.isCompleted}
+                    _light={{
+                      color: item.isCompleted ? "gray.400" : "coolGray.800",
+                    }}
+                    _dark={{
+                      color: item.isCompleted ? "gray.400" : "coolGray.50",
+                    }}
+                    onPress={() => handleStatusChange(itemI)}
+                  >
+                    {item.title}
+                  </Text>
+                  <IconButton
+                    size="sm"
+                    colorScheme="trueGray"
+                    icon={
+                      <Icon
+                        as={Ionicons}
+                        name="trash"
+                        size="xs"
+                        color="trueGray.400"
+                      />
+                    }
+                    onPress={() => handleDelete(itemI)}
+                  />
+                </HStack>
+              ))}
+            </VStack>
           </VStack>
-        </VStack>
-      </Box>
+        </Box>
       </Box>
     </NativeBaseProvider>
   );

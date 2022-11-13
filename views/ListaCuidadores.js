@@ -124,7 +124,10 @@ export default function ListaCuidadores({navigation}) {
           )}
           keyExtractor={(item) => item.id}
         />
-        <Box margin={5}>
+        <Box margin={5}
+        onPress={() => {
+          //ACA TENEMOS QUE HACER EL PUSH A LA API Y AGREGAR UN CUIDADOR O IR A UNA PANTALLA DDE METES LOS CAMPOS Y AGREGAS
+        }}>
           <Button success margin={1}>
             <Text>Agregar Cuidador</Text>
           </Button>

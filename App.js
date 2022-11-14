@@ -15,6 +15,7 @@ import ListaGastos from "./views/ListaGastos";
 import Pulpo from "./views/Pulpo";
 import Home from "./views/Home";
 import LoginG from "./views/LoginG";
+import Mapa from './views/Mapa'
 import * as Google from "expo-auth-session/providers/google";
 import { createContext } from "react";
 
@@ -41,7 +42,7 @@ export default function App() {
           <>
             {authData ? (
               <>
-                <Stack.Screen name="Home" component={Home} />
+                <Stack.Screen name="mapa PulpoBB" component={Mapa} />
               </>
             ) : (
               <Stack.Screen name="LoginG" component={LoginG} change={changeAuth}/>

@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import AgregarPersona from "./AgregarPersona";
 import {
   NativeBaseProvider,
   Box,
@@ -149,7 +149,13 @@ export default function ListaCuidadores({ navigation }) {
             //ACA TENEMOS QUE HACER EL PUSH A LA API Y AGREGAR UN CUIDADOR O IR A UNA PANTALLA DDE METES LOS CAMPOS Y AGREGAS
           }}
         >
-          <Button success margin={1}>
+          <Button
+            success
+            margin={1}
+            onPress={() => {
+              navigation.navigate("AgregarPersona");
+            }}
+          >
             <Text>Agregar Cuidador</Text>
           </Button>
         </Box>

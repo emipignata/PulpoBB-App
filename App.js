@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useState } from "react";
@@ -15,6 +15,10 @@ import ListaGastos from "./views/ListaGastos";
 import Pulpo from "./views/Pulpo";
 import Home from "./views/Home";
 import LoginG from "./views/LoginG";
+import AgregarPersona from "./views/AgregarPersona";
+import AgregarPulpo from "./views/AgregarPulpo";
+import AgregarGasto from "./views/AgregarGasto";
+import AgregarTarea from "./views/AgregarTarea";
 import * as Google from "expo-auth-session/providers/google";
 import { createContext } from "react";
 
@@ -57,6 +61,10 @@ export default function App() {
             <Stack.Screen name="Tarea" component={Tarea} />
             <Stack.Screen name="Gasto" component={Gasto} />
             <Stack.Screen name="Pulpo" component={Pulpo} />
+            <Stack.Screen name="AgregarPersona" component={AgregarPersona} />
+            <Stack.Screen name="AgregarPulpo" component={AgregarPulpo} />
+            <Stack.Screen name="AgregarTarea" component={AgregarTarea} />
+            <Stack.Screen name="AgregarGasto" component={AgregarGasto} />
           </>
         </Stack.Navigator>
       </NavigationContainer>

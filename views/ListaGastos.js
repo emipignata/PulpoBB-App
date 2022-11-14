@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 import {
@@ -134,7 +133,7 @@ export default function ListaGastos({ navigation }) {
             success
             margin={1}
             onPress={() => {
-              //ACA TENEMOS QUE HACER EL PUSH A LA API Y AGREGAR UN GASTO O IR A UNA PANTALLA DDE METES LOS CAMPOS Y AGREGAS
+              navigation.navigate("AgregarGasto");
             }}
           >
             <Text>Agregar Gasto</Text>

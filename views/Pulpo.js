@@ -21,11 +21,11 @@ const [descripcion,setDescripcion]=useState()
 const [listaIdGastos,setListaIdGastos]=useState()
 const [fechaNacimiento,setFechaNacimientno]=useState() */
 
-export default function Pulpo() {
+export default function Pulpo({ navigation }) {
   return (
     <NativeBaseProvider>
       <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
-        <VStack space={70} alignItems="center">
+        <VStack margin={5} space={3} alignItems="center">
           <Avatar
             bg="purple.600"
             alignSelf="center"
@@ -47,16 +47,24 @@ export default function Pulpo() {
               that gives you building blocks to build you React applications.
             </Text>
           </View>
-          <Button success>
+          <Button onPress={() => {
+                      navigation.navigate("AgregarGasto");
+                    }}>
             <Text>Agregar Gasto</Text>
           </Button>
-          <Button success>
+          <Button onPress={() => {
+                      navigation.navigate("AgregarTarea");
+                    }}>
             <Text>Agregar Tarea</Text>
           </Button>
-          <Button success>
+          <Button onPress={() => {
+                      navigation.navigate("AgregarTarea");
+                    }}>
             <Text>Asignar Tarea</Text>
           </Button>
-          <Button success>
+          <Button onPress={() => {
+                      navigation.navigate("AgregarPersona");
+                    }}>
             <Text>Agregar Cuidador</Text>
           </Button>
         </VStack>

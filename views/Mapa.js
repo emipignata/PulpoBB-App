@@ -1,6 +1,9 @@
 import * as React from "react";
+import * as Location from 'expo-location'
 import { StyleSheet, Text, View, Dimensions } from "react-native";
 import MapView, {Marker, Polyline} from 'react-native-maps'
+import MapViewDirections from "react-native-maps-directions";
+import {GOOGLE_MAPS_KEY} from '@env'
 
 export default function App() {
 
@@ -14,6 +17,24 @@ export default function App() {
         longitude:-58.44734
     })
 
+    React.useEffect(() =>{
+      getLocationPermission();
+    }, [])
+    async function getLocationPermission(){
+      let{ status } =await Location.requestForegroundPermissionsAsync();
+      if(status!=='granted'){
+        alert('Sin Acceso a la Ubicación del Usuario');
+        return;
+      }
+      let location = await Location.getCurrentPositionAsync({});
+      const current = {
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude
+      }
+
+      setOrigin(current);
+    }
+
     return (
       <View style={styles.container}>
         <MapView
@@ -25,12 +46,22 @@ export default function App() {
             longitudeDelta:0.04
          }}
          >
-            <Marker
+            <Marker draggable 
                 coordinate={origin}
+                onDragEnd={(direction)=>setOrigin(direction.nativeEvent.coordinate) }
             />
-            <Marker
+            <Marker draggable 
                 coordinate={destination}
+                onDragEnd={(direction)=>setDestination(direction.nativeEvent.coordinate)}
             />
+            <MapViewDirections
+              origin={origin}
+              destination={destination}
+              apikey={GOOGLE_MAPS_KEY}
+              strokeColor="pink"
+              strokeWidth={6}
+            />
+            
          </MapView>
         
       </View>

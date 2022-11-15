@@ -42,7 +42,7 @@ export default function App() {
           <>
             {authData ? (
               <>
-                <Stack.Screen name="mapa PulpoBB" component={Mapa} />
+                <Stack.Screen name="Home" component={Home} />
               </>
             ) : (
               <Stack.Screen name="LoginG" component={LoginG} change={changeAuth}/>

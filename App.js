@@ -52,6 +52,7 @@ export default function App() {
             <Stack.Screen name="ListaTareas" component={ListaTareas} />
             <Stack.Screen name="ListaPulpos" component={ListaPulpos} />
             <Stack.Screen name="ListaGastos" component={ListaGastos} />
+            <Stack.Screen name="Mapa" component={Mapa} />
             <Stack.Screen name="Signin" component={Signin} />
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Persona" component={Persona} />

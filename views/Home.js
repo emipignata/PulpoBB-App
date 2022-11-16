@@ -22,6 +22,10 @@ export default function Home({ navigation }) {
           <Text>Tus Tareas</Text>
         </Button>
 
+        <Button success margin={1} onPress={() => {navigation.navigate("Mapa");}}>
+          <Text>Puntos de Interes</Text>
+        </Button>
+
         <Button success margin={1} onPress={() => {navigation.navigate("Persona");}}>
           <Text>Persona</Text>
         </Button>

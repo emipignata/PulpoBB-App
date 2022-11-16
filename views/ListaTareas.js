@@ -11,6 +11,7 @@ import {
   Icon,
   IconButton,
   Checkbox,
+  Button,
 } from "native-base";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
@@ -160,6 +161,15 @@ export default function ListaTareas({ navigation }) {
             </VStack>
           </VStack>
         </Box>
+        <Button
+          success
+          margin={1}
+          onPress={() => {
+            navigation.navigate("AgregarTarea");
+          }}
+        >
+          <Text>Agregar Tarea</Text>
+        </Button>
       </Box>
     </NativeBaseProvider>
   );

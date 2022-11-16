@@ -14,7 +14,7 @@ import {
   Avatar,
 } from "native-base";
 
-export default function ListaPulpos({navigation}) {
+export default function ListaPulpos({ navigation }) {
   const data = [
     {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
@@ -57,7 +57,6 @@ export default function ListaPulpos({navigation}) {
         justifyContent="center"
         margin={20}
       >
-     
         <Image
           size={150}
           borderRadius={100}
@@ -90,36 +89,36 @@ export default function ListaPulpos({navigation}) {
                   }}
                 />
                 <VStack>
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => {
-                    navigation.navigate("Pulpo");
-                  }}
-                >
-                  <Text
-                    _dark={{
-                      color: "warmGray.50",
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                      navigation.navigate("Pulpo");
                     }}
-                    color="coolGray.800"
-                    bold
                   >
-                    {item.fullName}
-                  </Text>
+                    <Text
+                      _dark={{
+                        color: "warmGray.50",
+                      }}
+                      color="coolGray.800"
+                      bold
+                    >
+                      {item.fullName}
+                    </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => {
-                    navigation.navigate("Pulpo");
-                  }}
-                >
-                  <Text
-                    color="coolGray.600"
-                    _dark={{
-                      color: "warmGray.200",
+                    style={styles.button}
+                    onPress={() => {
+                      navigation.navigate("Pulpo");
                     }}
                   >
-                    {item.recentText}
-                  </Text>
+                    <Text
+                      color="coolGray.600"
+                      _dark={{
+                        color: "warmGray.200",
+                      }}
+                    >
+                      {item.recentText}
+                    </Text>
                   </TouchableOpacity>
                 </VStack>
                 <Spacer />
@@ -129,31 +128,32 @@ export default function ListaPulpos({navigation}) {
                     navigation.navigate("Pulpo");
                   }}
                 >
-                <Text
-                  fontSize="xs"
-                  _dark={{
-                    color: "warmGray.50",
-                  }}
-                  color="coolGray.800"
-                  alignSelf="flex-start"
-                >
-                  {item.timeStamp}
-                </Text>
+                  <Text
+                    fontSize="xs"
+                    _dark={{
+                      color: "warmGray.50",
+                    }}
+                    color="coolGray.800"
+                    alignSelf="flex-start"
+                  >
+                    {item.timeStamp}
+                  </Text>
                 </TouchableOpacity>
               </HStack>
             </Box>
           )}
           keyExtractor={(item) => item.id}
         />
-        <Box margin={5}>
-          <Button success margin={1}
-           onPress={() => {
+
+        <Button
+          margin={5}
+          onPress={() => {
+            navigation.navigate("AgregarPulpo");
             //ACA TENEMOS QUE HACER EL PUSH A LA API Y AGREGAR UN PULPO O IR A UNA PANTALLA DDE METES LOS CAMPOS Y AGREGAS
-          }}>
-            <Text>Agregar un nuevo PulpoBB</Text>
-          </Button>
-          
-        </Box>
+          }}
+        >
+          <Text>Agregar PulpoBB</Text>
+        </Button>
       </Box>
     </NativeBaseProvider>
   );

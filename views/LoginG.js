@@ -3,7 +3,7 @@ import * as React from "react"
 import * as Google from "expo-auth-session/providers/google";
 import { useEffect } from "react";
 import { createContext } from "react";
-import {MyContext} from "../App";
+// import { MyContext } from "../App";
 import Home from "./Home";
 import {
   NativeBaseProvider,
@@ -11,11 +11,7 @@ import {
   Button,
   Stack,
 } from "native-base";
-import App from "../App";
-
-
-
-
+// import App from "../App";
 
 export default function LoginG({ navigation,change}) {
   const [request, response, promptAsync] = Google.useAuthRequest({

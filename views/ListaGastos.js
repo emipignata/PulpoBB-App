@@ -88,13 +88,6 @@ export default function ListaGastos({ navigation }) {
                   >
                     {item.fullName}
                   </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => {
-                      navigation.navigate("Gasto");
-                    }}
-                  >
                   <Text
                     color="coolGray.600"
                     _dark={{

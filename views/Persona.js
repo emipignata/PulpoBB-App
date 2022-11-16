@@ -12,7 +12,7 @@ import {
   Stack
 } from "native-base";
 
-export default function Persona() {
+export default function Persona({ route }) {
   return (
     <NativeBaseProvider>
       <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
@@ -44,7 +44,7 @@ export default function Persona() {
         <Stack p="4" space={3}>
           <Stack space={2}>
             <Heading size="md" ml="-1">
-              Cuidador: Aru
+              Cuidador: { route.params.pulpo.fullName }
             </Heading>
             <Text fontSize="xs" _light={{
             color: "violet.500"

@@ -1,11 +1,13 @@
 import * as React from "react";
 import * as Location from 'expo-location'
-import { StyleSheet, Text, View, Dimensions, NativeBaseProvider, Box, Button } from "react-native";
+import { StyleSheet, Text, View, Dimensions,native } from "react-native";
 import MapView, {Marker, Polyline} from 'react-native-maps'
 import MapViewDirections from "react-native-maps-directions";
 import {GOOGLE_MAPS_KEY} from '@env'
+import { NavigationContainer } from "@react-navigation/native";
 
-export default function Mapa(navigation) {
+export default function Mapa ({navigation}) {
+  
   const [origin, setOrigin] = React.useState({
         latitude:-34.48908,
         longitude:-58.58399
@@ -35,7 +37,7 @@ export default function Mapa(navigation) {
     }
 
     return (
-    <NativeBaseProvider>
+     
       <View style={styles.container}>
         <MapView
          style={styles.map} 
@@ -60,11 +62,10 @@ export default function Mapa(navigation) {
               apikey={GOOGLE_MAPS_KEY}
               strokeColor="pink"
               strokeWidth={6}
-            />
-            
+            />            
          </MapView>        
       </View>  
-    </NativeBaseProvider>  
+   
     );
 
   }

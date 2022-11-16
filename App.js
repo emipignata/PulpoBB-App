@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useState } from "react";
@@ -15,7 +15,11 @@ import ListaGastos from "./views/ListaGastos";
 import Pulpo from "./views/Pulpo";
 import Home from "./views/Home";
 import LoginG from "./views/LoginG";
-import Mapa from './views/Mapa'
+import Mapa from "./views/Mapa"
+import AgregarPersona from "./views/AgregarPersona";
+import AgregarPulpo from "./views/AgregarPulpo";
+import AgregarGasto from "./views/AgregarGasto";
+import AgregarTarea from "./views/AgregarTarea";
 import * as Google from "expo-auth-session/providers/google";
 import { createContext } from "react";
 
@@ -42,7 +46,7 @@ export default function App() {
           <>
             {authData ? (
               <>
-                <Stack.Screen name="Home" component={Home} />
+                <Stack.Screen name="Home" component={Mapa} />
               </>
             ) : (
               <Stack.Screen name="LoginG" component={LoginG} change={changeAuth}/>
@@ -52,13 +56,16 @@ export default function App() {
             <Stack.Screen name="ListaTareas" component={ListaTareas} />
             <Stack.Screen name="ListaPulpos" component={ListaPulpos} />
             <Stack.Screen name="ListaGastos" component={ListaGastos} />
-            <Stack.Screen name="Mapa" component={Mapa} />
             <Stack.Screen name="Signin" component={Signin} />
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Persona" component={Persona} />
             <Stack.Screen name="Tarea" component={Tarea} />
             <Stack.Screen name="Gasto" component={Gasto} />
-            <Stack.Screen name="Pulpo" component={Pulpo} />
+            <Stack.Screen name="Pulpo" component={Pulpo} />       
+            <Stack.Screen name="AgregarPersona" component={AgregarPersona} />
+            <Stack.Screen name="AgregarPulpo" component={AgregarPulpo} />
+            <Stack.Screen name="AgregarTarea" component={AgregarTarea} />
+            <Stack.Screen name="AgregarGasto" component={AgregarGasto} />
           </>
         </Stack.Navigator>
       </NavigationContainer>

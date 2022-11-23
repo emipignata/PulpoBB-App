@@ -158,6 +158,9 @@ export default function ListaCuidadores({ navigation }) {
           >
             <Text>Agregar Cuidador</Text>
           </Button>
+          <Button title="GoBack" onPress={() => navigation.goBack()}>
+            <Text>Volver atrás</Text>
+          </Button>
         </Box>
       </Box>
     </NativeBaseProvider>

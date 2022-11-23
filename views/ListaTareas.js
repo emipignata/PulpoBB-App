@@ -77,10 +77,11 @@ export default function ListaTareas({ navigation }) {
       <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
         <Box maxW="300" w="100%">
           <Heading mb="3" size="md">
-            Agrega tareas para que tu PulpoBB siempre esté a gusto:
+            {/* Agrega tareas para que tu PulpoBB siempre esté a gusto: */}
+            Listado de Tareas
           </Heading>
           <VStack space={4}>
-            <HStack space={2}>
+            {/* <HStack space={2}>
               <Input
                 flex={1}
                 onChangeText={(v) => setInputValue(v)}
@@ -104,7 +105,7 @@ export default function ListaTareas({ navigation }) {
                   //ACA deberiamos enviar a la API la tarea tambien!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 }}
               />
-            </HStack>
+            </HStack> */}
             <VStack space={2}>
               {list.map((item, itemI) => (
                 <HStack
@@ -169,6 +170,9 @@ export default function ListaTareas({ navigation }) {
           }}
         >
           <Text>Agregar Tarea</Text>
+        </Button>
+        <Button title="GoBack" onPress={() => navigation.goBack()}>
+          <Text>Volver atrás</Text>
         </Button>
       </Box>
     </NativeBaseProvider>

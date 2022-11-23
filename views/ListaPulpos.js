@@ -154,6 +154,9 @@ export default function ListaPulpos({ navigation }) {
         >
           <Text>Agregar PulpoBB</Text>
         </Button>
+        <Button title="GoBack" onPress={() => navigation.goBack()}>
+          <Text>Volver atrás</Text>
+        </Button>
       </Box>
     </NativeBaseProvider>
   );

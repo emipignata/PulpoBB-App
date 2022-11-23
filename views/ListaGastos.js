@@ -73,21 +73,21 @@ export default function ListaGastos({ navigation }) {
                   }}
                 />
                 <VStack>
-                <TouchableOpacity
+                  <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
                       navigation.navigate("Gasto");
                     }}
                   >
-                  <Text
-                    _dark={{
-                      color: "warmGray.50",
-                    }}
-                    color="coolGray.800"
-                    bold
-                  >
-                    {item.fullName}
-                  </Text>
+                    <Text
+                      _dark={{
+                        color: "warmGray.50",
+                      }}
+                      color="coolGray.800"
+                      bold
+                    >
+                      {item.fullName}
+                    </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={styles.button}
@@ -95,33 +95,33 @@ export default function ListaGastos({ navigation }) {
                       navigation.navigate("Gasto");
                     }}
                   >
-                  <Text
-                    color="coolGray.600"
-                    _dark={{
-                      color: "warmGray.200",
-                    }}
-                  >
-                    {item.recentText}
-                  </Text>
+                    <Text
+                      color="coolGray.600"
+                      _dark={{
+                        color: "warmGray.200",
+                      }}
+                    >
+                      {item.recentText}
+                    </Text>
                   </TouchableOpacity>
                 </VStack>
                 <Spacer />
                 <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => {
-                      navigation.navigate("Gasto");
-                    }}
-                  >
-                <Text
-                  fontSize="xs"
-                  _dark={{
-                    color: "warmGray.50",
+                  style={styles.button}
+                  onPress={() => {
+                    navigation.navigate("Gasto");
                   }}
-                  color="coolGray.800"
-                  alignSelf="flex-start"
                 >
-                  {item.timeStamp}
-                </Text>
+                  <Text
+                    fontSize="xs"
+                    _dark={{
+                      color: "warmGray.50",
+                    }}
+                    color="coolGray.800"
+                    alignSelf="flex-start"
+                  >
+                    {item.timeStamp}
+                  </Text>
                 </TouchableOpacity>
               </HStack>
             </Box>
@@ -137,6 +137,9 @@ export default function ListaGastos({ navigation }) {
             }}
           >
             <Text>Agregar Gasto</Text>
+          </Button>
+          <Button title="GoBack" onPress={() => navigation.goBack()}>
+            <Text>Volver atrás</Text>
           </Button>
         </Box>
       </Box>

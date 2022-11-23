@@ -21,53 +21,50 @@ import AgregarGasto from "./views/AgregarGasto";
 import AgregarTarea from "./views/AgregarTarea";
 import * as Google from "expo-auth-session/providers/google";
 import { createContext } from "react";
+import Authcontext from "./services/Authcontext";
+import { authData } from "./services/Authcontext";
 
 // **********************************************************
 // apaga el WARNING
 import { LogBox } from "react-native";
-
 LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 // **********************************************************
 const Stack = createNativeStackNavigator();
-export const MyContext = React.createContext(); //aca creo el contexto global
+
 
 export default function App() {
-  const [authData, setAuthData] = useState(true);
-
-  const changeAuth = () => {
-    setAuthData(true);
-  };
+  const [auth, setAuth] = useState(authData);
 
   return (
- 
-      <NavigationContainer>
-        <Stack.Navigator>
-          <>
-            {authData ? (
-              <>
-                <Stack.Screen name="Home" component={Home} />
-              </>
-            ) : (
-              <Stack.Screen name="LoginG" component={LoginG} change={changeAuth}/>
-            )}
-
-            <Stack.Screen name="ListaCuidadores" component={ListaCuidadores} />
-            <Stack.Screen name="ListaTareas" component={ListaTareas} />
-            <Stack.Screen name="ListaPulpos" component={ListaPulpos} />
-            <Stack.Screen name="ListaGastos" component={ListaGastos} />
-            <Stack.Screen name="Signin" component={Signin} />
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="Persona" component={Persona} />
-            <Stack.Screen name="Tarea" component={Tarea} />
-            <Stack.Screen name="Gasto" component={Gasto} />
-            <Stack.Screen name="Pulpo" component={Pulpo} />
-            <Stack.Screen name="AgregarPersona" component={AgregarPersona} />
-            <Stack.Screen name="AgregarPulpo" component={AgregarPulpo} />
-            <Stack.Screen name="AgregarTarea" component={AgregarTarea} />
-            <Stack.Screen name="AgregarGasto" component={AgregarGasto} />
-          </>
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Authcontext.Provider value={{auth, setAuth}}>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <>
+              {auth ? (
+                <>
+                  <Stack.Screen name="Home" component={Home} />
+                </>
+              ) : (
+                <Stack.Screen name="LoginG" component={LoginG} />
+              )}
+              <Stack.Screen name="ListaCuidadores" component={ListaCuidadores} />
+              <Stack.Screen name="ListaTareas" component={ListaTareas} />
+              <Stack.Screen name="ListaPulpos" component={ListaPulpos} />
+              <Stack.Screen name="ListaGastos" component={ListaGastos} />
+              <Stack.Screen name="Signin" component={Signin} />
+              <Stack.Screen name="Login" component={Login} />
+              <Stack.Screen name="Persona" component={Persona} />
+              <Stack.Screen name="Tarea" component={Tarea} />
+              <Stack.Screen name="Gasto" component={Gasto} />
+              <Stack.Screen name="Pulpo" component={Pulpo} />
+              <Stack.Screen name="AgregarPersona" component={AgregarPersona} />
+              <Stack.Screen name="AgregarPulpo" component={AgregarPulpo} />
+              <Stack.Screen name="AgregarTarea" component={AgregarTarea} />
+              <Stack.Screen name="AgregarGasto" component={AgregarGasto} />
+            </>
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Authcontext.Provider>
     
   );
 }

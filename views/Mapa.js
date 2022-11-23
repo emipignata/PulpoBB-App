@@ -6,7 +6,7 @@ import MapViewDirections from "react-native-maps-directions";
 import {GOOGLE_MAPS_KEY} from '@env'
 import { NavigationContainer } from "@react-navigation/native";
 
-export default function Mapa ({navigation}) {
+export default function Mapa () {
   
   const [origin, setOrigin] = React.useState({
         latitude:-34.48908,

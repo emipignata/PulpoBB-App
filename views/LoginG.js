@@ -19,8 +19,7 @@ import App from "../App";
 
 export default function LoginG({ navigation,change}) {
   const [request, response, promptAsync] = Google.useAuthRequest({
-    expoClientId:
-      '1057533054522-p4514gdp6epjjccgspcd6sd20us068nd.apps.googleusercontent.com'
+    expoClientId:'1057533054522-p4514gdp6epjjccgspcd6sd20us068nd.apps.googleusercontent.com'
   });
   
   useEffect(() => {

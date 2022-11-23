@@ -1,15 +1,13 @@
 import { StyleSheet, Text, View } from "react-native";
 import * as React from "react"
 import * as Google from "expo-auth-session/providers/google";
-import { useEffect } from "react";
-import { createContext } from "react";
-import {MyContext} from "../App";
-import Home from "./Home";
+import { useEffect, useContext } from "react";
+import Authcontext from "../services/Authcontext";
+
 import {
   NativeBaseProvider,
   Box,
   Button,
-  Stack,
 } from "native-base";
 import App from "../App";
 
@@ -17,16 +15,16 @@ import App from "../App";
 
 
 
-export default function LoginG({ navigation,change}) {
+export default function LoginG({navigation,value}) {
   const [request, response, promptAsync] = Google.useAuthRequest({
     expoClientId:'1057533054522-p4514gdp6epjjccgspcd6sd20us068nd.apps.googleusercontent.com'
   });
-  
+  const { setAuth } = useContext(Authcontext)
   useEffect(() => {
     if (response?.type === "success") {
       const { authentication } = response;
       console.log("authenticationEMI",authentication);
-      change();
+      setAuth(authentication.accessToken)
     }
   }, [response]);
 

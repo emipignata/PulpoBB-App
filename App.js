@@ -15,6 +15,10 @@ import ListaGastos from "./views/ListaGastos";
 import Pulpo from "./views/Pulpo";
 import Home from "./views/Home";
 import LoginG from "./views/LoginG";
+import AgregarPersona from "./views/AgregarPersona";
+import AgregarPulpo from "./views/AgregarPulpo";
+import AgregarGasto from "./views/AgregarGasto";
+import AgregarTarea from "./views/AgregarTarea";
 import Mapa from './views/Mapa'
 import * as Google from "expo-auth-session/providers/google";
 import { createContext } from "react";

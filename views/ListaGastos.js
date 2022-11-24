@@ -1,5 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
-
+import Gastos from "../services/Gastos";
 import {
   NativeBaseProvider,
   Box,
@@ -11,41 +11,22 @@ import {
   FlatList,
   Avatar,
 } from "native-base";
+import { useEffect, useState } from "react";
+
+
 
 export default function ListaGastos({ navigation }) {
-  const data = [
-    {
-      id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-      fullName: "Pañales",
-      timeStamp: "",
-      recentText: "$6.543",
-      avatarUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    },
-    {
-      id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-      fullName: "Ropita",
-      timeStamp: "",
-      recentText: "$6.543",
-      avatarUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyEaZqT3fHeNrPGcnjLLX1v_W4mvBlgpwxnA&usqp=CAU",
-    },
-    {
-      id: "58694a0f-3da1-471f-bd96-145571e29d72",
-      fullName: "Nestun",
-      timeStamp: "",
-      recentText: "$6.543",
-      avatarUrl: "https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg",
-    },
-    {
-      id: "68694a0f-3da1-431f-bd56-142371e29d72",
-      fullName: "Libritos",
-      timeStamp: "",
-      recentText: "$6.543",
-      avatarUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr01zI37DYuR8bMV5exWQBSw28C1v_71CAh8d7GP1mplcmTgQA6Q66Oo--QedAN1B4E1k&usqp=CAU",
-    },
-  ];
+  const [gastos, setGastos]=useState([])
+
+  useEffect(() => {
+    Gastos.getGastos()
+    .then((data)=>{
+      console.log(data)
+      setGastos(data)
+      console.log()
+    }).catch((err)=>console.error(err))
+  }, []);
+  
   return (
     <NativeBaseProvider>
       <Box flex={1} bg="#fff" justifyContent="center" margin={10}>
@@ -53,7 +34,7 @@ export default function ListaGastos({ navigation }) {
           Lista de Gastos
         </Heading>
         <FlatList
-          data={data}
+          data={gastos}
           renderItem={({ item }) => (
             <Box
               borderBottomWidth="1"
@@ -86,7 +67,7 @@ export default function ListaGastos({ navigation }) {
                       color="coolGray.800"
                       bold
                     >
-                      {item.fullName}
+                      {item.detalle}
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity

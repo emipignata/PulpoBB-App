@@ -58,7 +58,7 @@ export default function AgregarGasto({ navigation }) {
           success
           margin={1}
           onPress={() => {
-            addGasto;
+            addGasto()
           }}
           disabled={notValid}
         >

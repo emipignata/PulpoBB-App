@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 
 //const [gastos,getGastos]=useState(gastos)
 
-const BASE_URL = `https://pokeapi.co/api/v2/berry/`;
+const BASE_URL = `https://7577-181-28-88-61.sa.ngrok.io/gastos`;
+//aca la raiz es la que me da NGROK
 
 const getGastos = () => {
   //``
@@ -16,6 +17,7 @@ const getGastos = () => {
       .catch((err) => reject(err));
   });
 };
+//OK
 const getGasto = (id) => {
   return new Promise((resolve, reject) => {
     fetch(`${BASE_URL}/${id}`)
@@ -27,13 +29,34 @@ const getGasto = (id) => {
   });
 };
 //aca hay que ver comop hacer el post
+
 const addGasto = (gasto) => {
+  const option = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(gasto),
+  };
+
+  // el PUT es igual a POST
+  
+
   return new Promise((resolve, reject) => {
-    tareas.push(gasto);
-    return resolve({ ...gasto, status: "added" });
+    fetch(`${BASE_URL}`,option)
+      .then((res) => res.json())
+      .then((data) => {
+        return resolve(data);
+      })
+      .catch((err) => reject(err));
   });
 };
 //DELETE TAREA????? como se hace??? RECIBE ID
+
+const editarGasto = (gasto) => {
+  const option = {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(gasto),
+  }};
 
 export default {
   getGastos,

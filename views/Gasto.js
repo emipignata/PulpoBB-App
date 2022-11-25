@@ -1,7 +1,9 @@
 
-import { StyleSheet, Text, useEffect } from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
+import { StyleSheet, Text, useEffect, navigation, route } from "react-native";
 import { useState } from "react";
 import Gastos from "../services/Gastos";
+
 import {
   NativeBaseProvider,
   Box,
@@ -13,8 +15,9 @@ import {
   Stack
 } from "native-base";
 
+
 //COMO RECIBIR UN ITEM DE LA FLATLIST SI TENEMOS LE ID LO BUSCAMOS CON EL GETGASTO(ID) SI RECIBIMOS EL ITEM ENTERO PODRIAMOS USARLO Y SERIA MEJOR OPCION
-export default function Gasto() {
+export default function Gasto({navigation,route}) {
 
   /* useEffect(() => {
     Gastos.getGasto(item.id)
@@ -50,13 +53,13 @@ export default function Gasto() {
           fontWeight: "700",
           fontSize: "xs"
         }} position="absolute" bottom="0" px="3" py="1.5">
-            $$$876543 monto API
+            Monto: ${route.params.item.monto} 
           </Center>
         </Box>
         <Stack p="4" space={3}>
           <Stack space={2}>
             <Heading size="md" ml="-1">
-              TITULO DEL GASTO API
+            {route.params.item.detalle} 
             </Heading>
             <Text fontSize="xs" _light={{
             color: "violet.500"

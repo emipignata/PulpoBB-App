@@ -1,4 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity, keyExtractor } from "react-native";
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import Gastos from "../services/Gastos";
 import {
   NativeBaseProvider,
@@ -13,7 +14,7 @@ import {
 } from "native-base";
 import { useEffect, useState } from "react";
 
-export default function ListaGastos({ navigation }) {
+export default function ListaGastos({ navigation,route }) {
   const [gastos, setGastos] = useState([]);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ export default function ListaGastos({ navigation }) {
       })
       .catch((err) => console.error(err));
   }, []);
-
+ const nav = useNavigation()
   return (
     <NativeBaseProvider>
       <Box flex={1} bg="#fff" justifyContent="center" margin={3}>
@@ -45,13 +46,14 @@ export default function ListaGastos({ navigation }) {
               pr={["0", "5"]}
               py="2"
             >
+              
               <HStack space={[2, 3]} justifyContent="space-between">
                 <Avatar size="48px" name="money" />
                 <VStack>
                   <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
-                      navigation.navigate("Gasto", keyExtractor);
+                      navigation.navigate("Gasto");
                     }}
                   >
                     <Text
@@ -86,7 +88,8 @@ export default function ListaGastos({ navigation }) {
                 <TouchableOpacity
                   style={styles.button}
                   onPress={() => {
-                    navigation.navigate("Gasto");
+                    console.log("estoy onpres ok")
+                    navigation.navigate("Gasto", { item: item });
                   }}
                 >
                   <Text
@@ -101,6 +104,7 @@ export default function ListaGastos({ navigation }) {
                   </Text>
                 </TouchableOpacity>
               </HStack>
+    
             </Box>
           )}
           keyExtractor={(item) => item.id}

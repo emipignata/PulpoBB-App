@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import { NativeBaseProvider, Box, Button } from "native-base";
+import Logout from "./Logout";
 
 export default function Home({ navigation }) {
   return (
@@ -13,7 +14,7 @@ export default function Home({ navigation }) {
             navigation.navigate("ListaCuidadores");
           }}
         >
-          <Text>Tus Cuidadores</Text>
+          <Text>Cuidadores</Text>
         </Button>
         <Button
           success
@@ -22,7 +23,7 @@ export default function Home({ navigation }) {
             navigation.navigate("ListaPulpos");
           }}
         >
-          <Text>Tus Pulpos</Text>
+          <Text>Pulpos</Text>
         </Button>
         <Button
           success
@@ -31,7 +32,7 @@ export default function Home({ navigation }) {
             navigation.navigate("ListaGastos");
           }}
         >
-          <Text>Tus Gastos</Text>
+          <Text>Gastos</Text>
         </Button>
         <Button
           success
@@ -40,35 +41,10 @@ export default function Home({ navigation }) {
             navigation.navigate("ListaTareas");
           }}
         >
-          <Text>Tus Tareas</Text>
+          <Text>Tareas</Text>
         </Button>
-        <Button
-          success
-          margin={1}
-          onPress={() => {
-            navigation.navigate("Persona");
-          }}
-        >
-          <Text>Persona</Text>
-        </Button>
-        <Button
-          success
-          margin={1}
-          onPress={() => {
-            navigation.navigate("Tarea");
-          }}
-        >
-          <Text>Tarea</Text>
-        </Button>
-        <Button
-          success
-          margin={1}
-          onPress={() => {
-            navigation.navigate("Gasto");
-          }}
-        >
-          <Text>Gasto</Text>
-        </Button>
+       
+        <Logout/>
       </Box>
     </NativeBaseProvider>
   );

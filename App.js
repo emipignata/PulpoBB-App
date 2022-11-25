@@ -4,8 +4,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useEffect, useState, useCallback } from "react";
 import * as React from "react";
 import ListaCuidadores from "./views/ListaCuidadores";
-import Signin from "./views/Signin";
-import Login from "./views/Login";
 import Persona from "./views/Persona";
 import ListaTareas from "./views/ListaTareas";
 import ListaPulpos from "./views/ListaPulpos";
@@ -19,8 +17,6 @@ import AgregarPersona from "./views/AgregarPersona";
 import AgregarPulpo from "./views/AgregarPulpo";
 import AgregarGasto from "./views/AgregarGasto";
 import AgregarTarea from "./views/AgregarTarea";
-import * as Google from "expo-auth-session/providers/google";
-import { createContext } from "react";
 import Authcontext from "./services/Authcontext";
 import { authData } from "./services/Authcontext";
 import AsyncStorage from "./services/AsyncStorage";
@@ -48,10 +44,11 @@ export default function App() {
   }), [])
 
   useEffect(useCallback(() => {
-    console.log("entra en el segundo effect");
+    
     setTimeout(() => {
       if (auth) {
         AsyncStorage.storeData('AuthData', auth)
+        console.log("entra en Store DATA el segundo effect");
       } else {
         AsyncStorage.clearAll()
       }
@@ -78,8 +75,6 @@ export default function App() {
               <Stack.Screen name="ListaTareas" component={ListaTareas} />
               <Stack.Screen name="ListaPulpos" component={ListaPulpos} />
               <Stack.Screen name="ListaGastos" component={ListaGastos} />
-              <Stack.Screen name="Signin" component={Signin} />
-              <Stack.Screen name="Login" component={Login} />
               <Stack.Screen name="Persona" component={Persona} />
               <Stack.Screen name="Tarea" component={Tarea} />
               <Stack.Screen name="Gasto" component={Gasto} />

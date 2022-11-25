@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, keyExtractor } from "react-native";
 import Gastos from "../services/Gastos";
 import {
   NativeBaseProvider,
@@ -13,23 +13,22 @@ import {
 } from "native-base";
 import { useEffect, useState } from "react";
 
-
-
 export default function ListaGastos({ navigation }) {
-  const [gastos, setGastos]=useState([])
+  const [gastos, setGastos] = useState([]);
 
   useEffect(() => {
     Gastos.getGastos()
-    .then((data)=>{
-      console.log(data)
-      setGastos(data)
-      console.log()
-    }).catch((err)=>console.error(err))
+      .then((data) => {
+        console.log(data);
+        setGastos(data);
+        console.log();
+      })
+      .catch((err) => console.error(err));
   }, []);
-  
+
   return (
     <NativeBaseProvider>
-      <Box flex={1} bg="#fff" justifyContent="center" margin={10}>
+      <Box flex={1} bg="#fff" justifyContent="center" margin={3}>
         <Heading fontSize="xl" p="4" pb="3">
           Lista de Gastos
         </Heading>
@@ -47,17 +46,12 @@ export default function ListaGastos({ navigation }) {
               py="2"
             >
               <HStack space={[2, 3]} justifyContent="space-between">
-                <Avatar
-                  size="48px"
-                  source={{
-                    uri: item.avatarUrl,
-                  }}
-                />
+                <Avatar size="48px" name="money" />
                 <VStack>
                   <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
-                      navigation.navigate("Gasto");
+                      navigation.navigate("Gasto", keyExtractor);
                     }}
                   >
                     <Text
@@ -67,13 +61,15 @@ export default function ListaGastos({ navigation }) {
                       color="coolGray.800"
                       bold
                     >
-                      {item.detalle}
+                      {item.detalle} {/* ACA TRAEMOS LA DATA DE UN SOLO ITEM */}
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
+                   
                     style={styles.button}
                     onPress={() => {
                       navigation.navigate("Gasto");
+                      console.log(item.id);
                     }}
                   >
                     <Text
@@ -82,7 +78,7 @@ export default function ListaGastos({ navigation }) {
                         color: "warmGray.200",
                       }}
                     >
-                      {item.recentText}
+                      ${item.monto}
                     </Text>
                   </TouchableOpacity>
                 </VStack>
@@ -101,7 +97,7 @@ export default function ListaGastos({ navigation }) {
                     color="coolGray.800"
                     alignSelf="flex-start"
                   >
-                    {item.timeStamp}
+                    {item.fechaCreacion}
                   </Text>
                 </TouchableOpacity>
               </HStack>

@@ -77,7 +77,7 @@ export default function Gasto({navigation,route}) {
               <Text color="coolGray.600" _dark={{
               color: "warmGray.200"
             }} fontWeight="400">
-                FECHA DE CREACION 6 mins ago API
+                {route.params.item.fechaCreacion} 
               </Text>
             </HStack>
           </HStack>

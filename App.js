@@ -1,7 +1,7 @@
 import { StyleSheet} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import * as React from "react";
 import ListaCuidadores from "./views/ListaCuidadores";
 import Signin from "./views/Signin";
@@ -23,6 +23,7 @@ import * as Google from "expo-auth-session/providers/google";
 import { createContext } from "react";
 import Authcontext from "./services/Authcontext";
 import { authData } from "./services/Authcontext";
+import AsyncStorage from "./services/AsyncStorage";
 
 // **********************************************************
 // apaga el WARNING
@@ -34,6 +35,32 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [auth, setAuth] = useState(authData);
+
+  useEffect(useCallback(() => {
+    console.log("Aqui tengo que verificar si existe data en la cache del dispositivo");
+    AsyncStorage.getData('AuthData')
+      .then(data => {
+        // console.log("Encontro data???", data);
+        if (data) {
+          setAuth(data)
+        }
+      })
+  }), [])
+
+  useEffect(useCallback(() => {
+    console.log("entra en el segundo effect");
+    setTimeout(() => {
+      if (auth) {
+        AsyncStorage.storeData('AuthData', auth)
+      } else {
+        AsyncStorage.clearAll()
+      }
+    });
+  }), [auth])
+
+
+
+
 
   return (
       <Authcontext.Provider value={{auth, setAuth}}>

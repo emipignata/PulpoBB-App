@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 
 const BASE_URL = `https://7577-181-28-88-61.sa.ngrok.io/gastos`;
 //aca la raiz es la que me da NGROK
+//CADA VEZ QUE SE REFRESCA NGROK HAY QUE CAMBIAR LAS URL QUE NOS DEVUELVEgit 
 
 const getGastos = () => {
   //``

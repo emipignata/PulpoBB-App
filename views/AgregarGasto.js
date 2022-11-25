@@ -2,10 +2,8 @@ import {
   NativeBaseProvider,
   Box,
   Button,
-  HStack,
   Input,
   Stack,
-  Switch,
   Text,
 } from "native-base";
 
@@ -26,7 +24,6 @@ export default function AgregarGasto({ navigation }) {
 
   const addGasto = () => {
     console.log("Click en boton guardar gasto");
-
     console.log(gastosService);
 
     gastosService.addGasto(gasto).then((res) => {

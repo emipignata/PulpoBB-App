@@ -13,7 +13,7 @@ import App from "../App";
 
 
 
-image={require (https://oblador.github.io/react-native-vector-icons/)}
+//image={require (https://oblador.github.io/react-native-vector-icons/)}
 
 export default function LoginG({navigation,value}) {
   const [request, response, promptAsync] = Google.useAuthRequest({

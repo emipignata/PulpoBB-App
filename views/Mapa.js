@@ -38,7 +38,7 @@ export default function Mapa () {
     }
 
     return (
-    //<NativeBaseProvider>
+   
       <View style={styles.container}>
         <MapView
          style={styles.map} 
@@ -51,7 +51,7 @@ export default function Mapa () {
          >
             <Marker draggable 
                 coordinate={origin}
-                image={require ('.././assets/PulpoImage.png')}
+                image={require ('.././assets/PulpoIcon.png')}
                 onDragEnd={(direction)=>setOrigin(direction.nativeEvent.coordinate) }
             />
             <Marker draggable 
@@ -67,7 +67,7 @@ export default function Mapa () {
             />            
          </MapView>        
       </View>  
-   // </NativeBaseProvider>
+    
     );
 
   }

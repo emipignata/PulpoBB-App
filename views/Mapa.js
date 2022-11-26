@@ -4,7 +4,7 @@ import { StyleSheet, View, Dimensions } from "react-native";
 import MapView, {Marker} from 'react-native-maps'
 import MapViewDirections from "react-native-maps-directions";
 import {GOOGLE_MAPS_KEY} from '@env'
-import {NativeBaseProvider, Box, Center, HStack, Heading, Image, AspectRatio, Stack} from "native-base";
+
 
 
 export default function Mapa () {
@@ -18,7 +18,7 @@ export default function Mapa () {
         latitude:-34.55146,
         longitude:-58.44734
     });
-
+    
     React.useEffect(() =>{
       getLocationPermission();
     }, [])

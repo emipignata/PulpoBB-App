@@ -43,7 +43,16 @@ export default function Home({ navigation }) {
         >
           <Text>Tareas</Text>
         </Button>
-       
+        <Button
+          success
+          margin={1}
+          onPress={() => {
+            navigation.navigate("Mapa");
+          }}
+        >
+          <Text>Mapa</Text>
+        </Button>
+      
         <Logout/>
       </Box>
     </NativeBaseProvider>

@@ -5,6 +5,7 @@ import { useEffect, useState, useCallback } from "react";
 import * as React from "react";
 import ListaCuidadores from "./views/ListaCuidadores";
 import Persona from "./views/Persona";
+import Mapa from "./views/Mapa";
 import ListaTareas from "./views/ListaTareas";
 import ListaPulpos from "./views/ListaPulpos";
 import Tarea from "./views/Tarea";
@@ -83,6 +84,8 @@ export default function App() {
               <Stack.Screen name="AgregarPulpo" component={AgregarPulpo} />
               <Stack.Screen name="AgregarTarea" component={AgregarTarea} />
               <Stack.Screen name="AgregarGasto" component={AgregarGasto} />
+              <Stack.Screen name="Mapa" component={Mapa} />
+             
             </>
           </Stack.Navigator>
         </NavigationContainer>

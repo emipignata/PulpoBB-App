@@ -25,7 +25,7 @@ export default function AgregarGasto({ navigation, route }) {
 
   const addGasto = () => {
     console.log("Click en boton guardar gasto");
-    const idd = route.params.id;
+    //const idd = route.params.id;
     console.log(gasto);
     gastosService.addGasto(gasto).then((res) => {
       console.log(res);
@@ -56,7 +56,7 @@ export default function AgregarGasto({ navigation, route }) {
             value={gasto.monto}
             onChangeText={(text) => setGasto({ ...gasto, monto: text })}
           />
-          
+
           <Input value={() => setGasto({ ...gasto, id: route.params.id })} />
         </Stack>
 

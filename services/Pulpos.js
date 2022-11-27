@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-//const [pulpos,getPulpos]=useState(pulpos)
 
-const BASE_URL = `https://pokeapi.co/api/v2/berry/`;
+const BASE_URL = `https://3cd7-181-28-88-61.sa.ngrok.io/pulpos`;
 
 const getPulpos = () => {
-  //``
-  // Ejemplo con FETCH
+  //GET PULPOS
   return new Promise((resolve, reject) => {
     fetch(`${BASE_URL}`)
       .then((res) => res.json())
@@ -26,14 +24,23 @@ const getPulpo = (id) => {
       .catch((error) => reject(err));
   });
 };
-//aca hay que ver comop hacer el post
+//POST
 const addPulpo = (pulpo) => {
+  const option = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(pulpo),
+  };
   return new Promise((resolve, reject) => {
-    tareas.push(pulpo);
-    return resolve({ ...pulpo, status: "added" });
+    fetch(`${BASE_URL}`,option)
+      .then((res) => res.json())
+      .then((data) => {
+        return resolve(data);
+      })
+      .catch((err) => reject(err));
   });
 };
-//DELETE TAREA????? como se hace??? RECIBVE ID
+//DELETE pulpo???
 
 export default {
   getPulpos,

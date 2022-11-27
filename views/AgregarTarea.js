@@ -9,7 +9,7 @@ import {
 import { useCallback, useContext, useEffect, useState } from "react";
 import tareasService from "../services/Tareas";
 
-export default function AgregarTarea({ navigation }) {
+export default function AgregarTarea({ navigation,route }) {
   const [tarea, setTarea] = useState({});
   const [notValid, setNotValid] = useState(true);
 
@@ -18,8 +18,7 @@ export default function AgregarTarea({ navigation }) {
       const isComplete =
         tarea.titulo &&
         tarea.detalle &&
-        tarea.fechaCaducidad &&
-        tarea.nombreCreador;
+        tarea.fechaCaducidad 
       setNotValid(!isComplete);
     }),
     [tarea]
@@ -29,7 +28,7 @@ export default function AgregarTarea({ navigation }) {
     console.log("Click en boton guardar tarea");
     const idd = route.params.id;
     console.log(tarea);
-    gastosService.addTarea(tarea).then((res) => {
+    tareasService.addTarea(tarea).then((res) => {
       console.log(res);
       navigation.goBack();
     });

@@ -67,7 +67,7 @@ export default function ListaPulpos({ navigation, route }) {
                       color="coolGray.800"
                       bold
                     >
-                      {item.nombre}
+                     Nombre: {item.nombre}
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
@@ -82,7 +82,7 @@ export default function ListaPulpos({ navigation, route }) {
                         color: "warmGray.200",
                       }}
                     >
-                      {item.nombre}
+                      Nro Carnet: {item.carnetObraSocial}
                     </Text>
                   </TouchableOpacity>
                 </VStack>
@@ -93,16 +93,7 @@ export default function ListaPulpos({ navigation, route }) {
                     navigation.navigate("Pulpo", { item: item });
                   }}
                 >
-                  <Text
-                    fontSize="xs"
-                    _dark={{
-                      color: "warmGray.50",
-                    }}
-                    color="coolGray.800"
-                    alignSelf="flex-start"
-                  >
-                    {item.nombre}
-                  </Text>
+                 
                 </TouchableOpacity>
               </HStack>
             </Box>

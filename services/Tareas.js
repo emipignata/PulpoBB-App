@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 //const [tareas,getTareas]=useState(tareas)
 
-const BASE_URL = `https://ce85-181-28-88-61.sa.ngrok.io/tareas`;
+const BASE_URL = `https://0751-181-28-88-61.sa.ngrok.io/tareas`;
 
 const getTareas = () => {
   return new Promise((resolve, reject) => {

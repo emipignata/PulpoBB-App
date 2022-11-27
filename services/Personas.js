@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 
-const BASE_URL = `https://3cd7-181-28-88-61.sa.ngrok.io/personas`;
+const BASE_URL = `https://0751-181-28-88-61.sa.ngrok.io/personas`;
 
 const getPersonas = () => {
     return new Promise((resolve, reject) => {

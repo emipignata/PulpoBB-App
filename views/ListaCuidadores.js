@@ -37,16 +37,16 @@ export default function ListaCuidadores({ navigation, route }) {
         flex={1}
         bg="#fff"
         alignItems="center"
-        justifyContent="center"
+        
         margin={0}
       >
         <Image
-          size={150}
+          size={100}
           borderRadius={100}
           source={{
             uri: "https://wallpaperaccess.com/full/317501.jpg",
           }}
-          alt="Alternate Text"
+          alt="Presentacion Cuidadores"
         />
         <Heading fontSize="xl" p="4" pb="3">
           Cuidadores
@@ -68,7 +68,7 @@ export default function ListaCuidadores({ navigation, route }) {
                 <Avatar
                   size="48px"
                   source={{
-                    /* uri: item.avatarUrl, */
+                    uri: "https://wallpaperaccess.com/full/317501.jpg"
                   }}
                 />
                 <VStack>

@@ -1,6 +1,4 @@
-import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
-import { StyleSheet, Text, View, navigation, route } from "react-native";
+import { Text } from "react-native";
 import {
   NativeBaseProvider,
   Box,

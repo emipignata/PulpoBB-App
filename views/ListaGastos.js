@@ -1,6 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Gastos from "../services/Gastos";
+import { useEffect, useState } from "react";
 import {
   NativeBaseProvider,
   Box,
@@ -12,7 +13,7 @@ import {
   FlatList,
   Avatar,
 } from "native-base";
-import { useEffect, useState } from "react";
+
 
 export default function ListaGastos({ navigation, route }) {
   const [gastos, setGastos] = useState([]);

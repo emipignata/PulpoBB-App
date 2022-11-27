@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-//const [gastos,getGastos]=useState(gastos)
 
-const BASE_URL = `https://6826-181-28-88-61.sa.ngrok.io/gastos`;
+const BASE_URL = `https://3cd7-181-28-88-61.sa.ngrok.io/gastos`;
 //aca la raiz es la que me da NGROK
 //CADA VEZ QUE SE REFRESCA NGROK HAY QUE CAMBIAR LAS URL QUE NOS DEVUELVE
 //levantar la API con nodemon

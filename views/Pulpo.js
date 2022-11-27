@@ -1,31 +1,11 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import { useState } from "react";
-import {
-  NativeBaseProvider,
-  Box,
-  Button,
-  Heading,
-  VStack,
-  Avatar,
-} from "native-base";
+import { NativeBaseProvider, Box, Heading, VStack, Avatar } from "native-base";
 
-//Atributos const[]=useState{}
-
-/* const [listaIdCuidadores,setlistaIdCuidadores]=useState()
-const [listaIdTareas,setlistaIdTareas]=useState()
-const [idPulpo,setIdPulpo]=useState()
-const [nombre,setNombre]=useState()
-const [apellido,setApellido]=useState()
-const [descripcion,setDescripcion]=useState()
-const [listaIdGastos,setListaIdGastos]=useState()
-const [fechaNacimiento,setFechaNacimientno]=useState() */
-
-export default function Pulpo({ navigation }) {
+export default function Pulpo({ navigation, route }) {
   return (
     <NativeBaseProvider>
       <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
-        <VStack margin={5} space={3} alignItems="center">
+        <VStack margin={3} space={1} alignItems="center">
           <Avatar
             bg="purple.600"
             alignSelf="center"
@@ -38,35 +18,18 @@ export default function Pulpo({ navigation }) {
           </Avatar>
 
           <View>
-            <Heading>
-              A component library for the{" "}
-              <Heading color="emerald.400">React Ecosystem</Heading>
+            <Heading>Nombre: {route.params.item.nombre}</Heading>
+            <Heading color="emerald.400">
+              Nacimiento: {route.params.item.fechaNac}
             </Heading>
+
+            <Text pt="3"> Estatura: {route.params.item.estatura} </Text>
+            <Text pt="3"> Peso: {route.params.item.peso} </Text>
             <Text pt="3">
-              NativeBase is a simple, modular and accessible component library
-              that gives you building blocks to build you React applications.
+              {" "}
+              Nro Obra Social: {route.params.item.carnetObraSocial}{" "}
             </Text>
           </View>
-          <Button onPress={() => {
-                      navigation.navigate("AgregarGasto");
-                    }}>
-            <Text>Agregar Gasto</Text>
-          </Button>
-          <Button onPress={() => {
-                      navigation.navigate("AgregarTarea");
-                    }}>
-            <Text>Agregar Tarea</Text>
-          </Button>
-          <Button onPress={() => {
-                      navigation.navigate("AgregarTarea");
-                    }}>
-            <Text>Asignar Tarea</Text>
-          </Button>
-          <Button onPress={() => {
-                      navigation.navigate("AgregarPersona");
-                    }}>
-            <Text>Agregar Cuidador</Text>
-          </Button>
         </VStack>
       </Box>
     </NativeBaseProvider>
@@ -75,6 +38,6 @@ export default function Pulpo({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    marginTop: 10,
   },
 });

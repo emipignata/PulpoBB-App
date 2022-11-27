@@ -26,9 +26,6 @@ export default function AgregarPersona({ navigation }) {
 
   const addPersona = () => {
     console.log("Click en boton guardar persona");
-
-    console.log(personasService);
-
     personasService.addPersona(persona).then((res) => {
       console.log(res);
       navigation.goBack();
@@ -83,7 +80,8 @@ export default function AgregarPersona({ navigation }) {
           success
           margin={1}
           onPress={() => {
-            addPersona;
+            addPersona(persona);
+            navigation.goBack()
           }}
           disabled={notValid}
         >

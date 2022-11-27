@@ -2,16 +2,14 @@ import {
   NativeBaseProvider,
   Box,
   Button,
-  HStack,
   Input,
   Stack,
-  Switch,
   Text,
 } from "native-base";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import pulposService from "../services/Pulpos";
 
-export default function AgregarPulpo({ navigation }) {
+export default function AgregarPulpo({ navigation, route }) {
   const [pulpo, setPulpo] = useState({});
   const [notValid, setNotValid] = useState(true);
 
@@ -30,9 +28,8 @@ export default function AgregarPulpo({ navigation }) {
 
   const addPulpo = () => {
     console.log("Click en boton guardar pulpo");
-
-    console.log(pulposService);
-
+    //const idd = route.params.item;
+    console.log(pulpo);
     pulposService.addPulpo(pulpo).then((res) => {
       console.log(res);
       navigation.goBack();
@@ -78,18 +75,19 @@ export default function AgregarPulpo({ navigation }) {
             value={pulpo.estatura}
             onChangeText={(text) => setPulpo({ ...pulpo, estatura: text })}
           />
+          <Input value={() => setPulpo({ ...pulpo, id: route.params.id })} />
         </Stack>
 
         <Button
           success
-          title="Agregar Pulpo"
           margin={1}
           onPress={() => {
-            addPulpo;
+            addPulpo(pulpo);
+            navigation.goBack();
           }}
           disabled={notValid}
         >
-          <Text>Agregar PulpoBB</Text>
+          <Text>Agregar Pulpo BB</Text>
         </Button>
         <Button title="Cancel" onPress={() => navigation.goBack()}>
           <Text>Cancelar</Text>

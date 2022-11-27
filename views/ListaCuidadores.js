@@ -1,6 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Personas from "../services/Personas";
+import { useEffect, useState } from "react";
 import {
   NativeBaseProvider,
   Box,
@@ -13,11 +14,10 @@ import {
   FlatList,
   Avatar,
 } from "native-base";
-import { useEffect, useState } from "react";
 
 export default function ListaCuidadores({ navigation, route }) {
   const [personas, setPersonas] = useState([]);
-  let generarId = () => gastos.length + 1;
+  let generarId = () => personas.length + 1;
 
   useEffect(() => {
     Personas.getPersonas()
@@ -30,39 +30,7 @@ export default function ListaCuidadores({ navigation, route }) {
   }, []);
 
   const nav = useNavigation();
- /*  const data = [
-    {
-      id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-      fullName: "Gabi Angellus",
-      timeStamp: "12:47 PM",
-      recentText: "Good Day!",
-      avatarUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    },
-    {
-      id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-      fullName: "Mitch Mathur",
-      timeStamp: "11:11 PM",
-      recentText: "Cheer up, there!",
-      avatarUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyEaZqT3fHeNrPGcnjLLX1v_W4mvBlgpwxnA&usqp=CAU",
-    },
-    {
-      id: "58694a0f-3da1-471f-bd96-145571e29d72",
-      fullName: "Emi Pignata",
-      timeStamp: "6:22 PM",
-      recentText: "Good Day!",
-      avatarUrl: "https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg",
-    },
-    {
-      id: "68694a0f-3da1-431f-bd56-142371e29d72",
-      fullName: "Juan Kumar",
-      timeStamp: "8:56 PM",
-      recentText: "All the best",
-      avatarUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr01zI37DYuR8bMV5exWQBSw28C1v_71CAh8d7GP1mplcmTgQA6Q66Oo--QedAN1B4E1k&usqp=CAU",
-    },
-  ]; */
+ 
   return (
     <NativeBaseProvider>
       <Box
@@ -100,7 +68,7 @@ export default function ListaCuidadores({ navigation, route }) {
                 <Avatar
                   size="48px"
                   source={{
-                    uri: item.avatarUrl,
+                    /* uri: item.avatarUrl, */
                   }}
                 />
                 <VStack>
@@ -162,14 +130,13 @@ export default function ListaCuidadores({ navigation, route }) {
         <Box
           margin={1}
           onPress={() => {
-            //ACA TENEMOS QUE HACER EL PUSH A LA API Y AGREGAR UN CUIDADOR O IR A UNA PANTALLA DDE METES LOS CAMPOS Y AGREGAS
           }}
         >
           <Button
             success
             margin={1}
             onPress={() => {
-              navigation.navigate("AgregarPersona");
+              navigation.navigate("AgregarPersona",{ id: generarId() });
             }}
           >
             <Text>Agregar Cuidador</Text>

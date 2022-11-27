@@ -1,6 +1,6 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
-
+import Pulpos from "../services/Pulpos";
+import { useEffect, useState } from "react";
 import {
   NativeBaseProvider,
   Box,
@@ -9,67 +9,32 @@ import {
   Spacer,
   Heading,
   VStack,
-  Image,
   FlatList,
   Avatar,
 } from "native-base";
 
-export default function ListaPulpos({ navigation }) {
-  const data = [
-    {
-      id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-      fullName: "Pulpo 1",
-      timeStamp: "12:47 PM",
-      recentText: "Good Day!",
-      avatarUrl:
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    },
-    {
-      id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-      fullName: "Pulpo 2",
-      timeStamp: "11:11 PM",
-      recentText: "Cheer up, there!",
-      avatarUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyEaZqT3fHeNrPGcnjLLX1v_W4mvBlgpwxnA&usqp=CAU",
-    },
-    {
-      id: "58694a0f-3da1-471f-bd96-145571e29d72",
-      fullName: "Pulpo 3",
-      timeStamp: "6:22 PM",
-      recentText: "Good Day!",
-      avatarUrl: "https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg",
-    },
-    {
-      id: "68694a0f-3da1-431f-bd56-142371e29d72",
-      fullName: "Pulpo 4",
-      timeStamp: "8:56 PM",
-      recentText: "All the best",
-      avatarUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr01zI37DYuR8bMV5exWQBSw28C1v_71CAh8d7GP1mplcmTgQA6Q66Oo--QedAN1B4E1k&usqp=CAU",
-    },
-  ];
+export default function ListaPulpos({ navigation, route }) {
+  const [pulpos, setPulpos] = useState([]);
+
+  let generarId = () => pulpos.length + 1;
+
+  useEffect(() => {
+    Pulpos.getPulpos()
+      .then((data) => {
+        console.log(data);
+        setPulpos(data);
+        console.log();
+      })
+      .catch((err) => console.error(err));
+  }, []);
   return (
     <NativeBaseProvider>
-      <Box
-        flex={1}
-        bg="#fff"
-        alignItems="center"
-        justifyContent="center"
-        margin={20}
-      >
-        <Image
-          size={150}
-          borderRadius={100}
-          source={{
-            uri: "https://wallpaperaccess.com/full/317501.jpg",
-          }}
-          alt="Alternate Text"
-        />
+      <Box flex={1} bg="#fff" justifyContent="center" margin={3}>
         <Heading fontSize="xl" p="4" pb="3">
-          Pulpos BB
+          List de PulposBB
         </Heading>
         <FlatList
-          data={data}
+          data={pulpos}
           renderItem={({ item }) => (
             <Box
               borderBottomWidth="1"
@@ -83,7 +48,7 @@ export default function ListaPulpos({ navigation }) {
             >
               <HStack space={[2, 3]} justifyContent="space-between">
                 <Avatar
-                  size="48px"
+                  size="30px"
                   source={{
                     uri: item.avatarUrl,
                   }}
@@ -92,7 +57,7 @@ export default function ListaPulpos({ navigation }) {
                   <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
-                      navigation.navigate("Pulpo");
+                      navigation.navigate("Pulpo", { item: item });
                     }}
                   >
                     <Text
@@ -102,13 +67,13 @@ export default function ListaPulpos({ navigation }) {
                       color="coolGray.800"
                       bold
                     >
-                      {item.fullName}
+                      {item.nombre}
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
-                      navigation.navigate("Pulpo");
+                      navigation.navigate("Pulpo", { item: item });
                     }}
                   >
                     <Text
@@ -117,7 +82,7 @@ export default function ListaPulpos({ navigation }) {
                         color: "warmGray.200",
                       }}
                     >
-                      {item.recentText}
+                      {item.nombre}
                     </Text>
                   </TouchableOpacity>
                 </VStack>
@@ -125,7 +90,7 @@ export default function ListaPulpos({ navigation }) {
                 <TouchableOpacity
                   style={styles.button}
                   onPress={() => {
-                    navigation.navigate("Pulpo");
+                    navigation.navigate("Pulpo", { item: item });
                   }}
                 >
                   <Text
@@ -136,7 +101,7 @@ export default function ListaPulpos({ navigation }) {
                     color="coolGray.800"
                     alignSelf="flex-start"
                   >
-                    {item.timeStamp}
+                    {item.nombre}
                   </Text>
                 </TouchableOpacity>
               </HStack>
@@ -148,8 +113,7 @@ export default function ListaPulpos({ navigation }) {
         <Button
           margin={5}
           onPress={() => {
-            navigation.navigate("AgregarPulpo");
-            //ACA TENEMOS QUE HACER EL PUSH A LA API Y AGREGAR UN PULPO O IR A UNA PANTALLA DDE METES LOS CAMPOS Y AGREGAS
+            navigation.navigate("AgregarPulpo", { id: generarId() });
           }}
         >
           <Text>Agregar PulpoBB</Text>

@@ -1,9 +1,4 @@
-
-import { NavigationContainer } from '@react-navigation/native';
-import { StyleSheet, Text, useEffect, navigation, route } from "react-native";
-import { useState } from "react";
-import Gastos from "../services/Gastos";
-
+import { Text } from "react-native";
 import {
   NativeBaseProvider,
   Box,

@@ -11,7 +11,7 @@ import {
 import { useCallback, useContext, useEffect, useState } from "react";
 import personasService from "../services/Personas";
 
-export default function AgregarPersona({ navigation }) {
+export default function AgregarPersona({ navigation, route }) {
   const [persona, setPersona] = useState({});
   const [notValid, setNotValid] = useState(true);
 
@@ -26,6 +26,7 @@ export default function AgregarPersona({ navigation }) {
 
   const addPersona = () => {
     console.log("Click en boton guardar persona");
+    console.log(persona);
     personasService.addPersona(persona).then((res) => {
       console.log(res);
       navigation.goBack();
@@ -57,6 +58,27 @@ export default function AgregarPersona({ navigation }) {
             value={persona.vinculo}
             onChangeText={(text) => setPersona({ ...persona, vinculo: text })}
           />
+          <Input
+            size="md"
+            placeholder="Rol: Admin | Cuidador"
+            value={persona.rol}
+            onChangeText={(text) => setPersona({ ...persona, rol: text })}
+          />
+          <Input
+            isDisabled
+            placeholder="id *No es necesario completar"
+            value={() => setPersona({ ...persona, id: route.params.id })}
+          />
+          <Input
+            isDisabled
+            placeholder="id Pulpo *No es necesario completar"
+            value={() => setPersona({ ...persona, idPulpo: 999 })}
+          />
+          <Input
+            isDisabled
+            placeholder="*No es necesario completar"
+            value={() => setPersona({ ...persona, idtestPulpo: 111 })}
+          />
         </Stack>
 
         <HStack
@@ -66,14 +88,19 @@ export default function AgregarPersona({ navigation }) {
           //   console.log("hay que pasar true o false segun el rol que se elija");
           // }}
         >
-          <Text>Es Admin</Text>
-          <Switch
+          {/*  <Text>Es Admin</Text>
+
+           <Switch
             size="sm"
             onPress={(value) => {
               console.log("si el switch es true es admin");
-              setPersona({ ...persona, rol: "Administrador" });
+              if (isDisabled) {
+                setPersona({ ...persona, rol: "Cuidador" });
+              } else {
+                setPersona({ ...persona, rol: "Administrador" });
+              }
             }}
-          />
+          /> */}
         </HStack>
 
         <Button
@@ -81,7 +108,7 @@ export default function AgregarPersona({ navigation }) {
           margin={1}
           onPress={() => {
             addPersona(persona);
-            navigation.goBack()
+            navigation.goBack();
           }}
           disabled={notValid}
         >

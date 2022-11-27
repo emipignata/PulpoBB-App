@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
-import AgregarPersona from "./AgregarPersona";
+import { useNavigation } from "@react-navigation/native";
+import Personas from "../services/Personas";
 import {
   NativeBaseProvider,
   Box,
@@ -12,9 +13,24 @@ import {
   FlatList,
   Avatar,
 } from "native-base";
+import { useEffect, useState } from "react";
 
-export default function ListaCuidadores({ navigation }) {
-  const data = [
+export default function ListaCuidadores({ navigation, route }) {
+  const [personas, setPersonas] = useState([]);
+  let generarId = () => gastos.length + 1;
+
+  useEffect(() => {
+    Personas.getPersonas()
+      .then((data) => {
+        console.log(data);
+        setPersonas(data);
+        console.log();
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  const nav = useNavigation();
+ /*  const data = [
     {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
       fullName: "Gabi Angellus",
@@ -46,7 +62,7 @@ export default function ListaCuidadores({ navigation }) {
       avatarUrl:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr01zI37DYuR8bMV5exWQBSw28C1v_71CAh8d7GP1mplcmTgQA6Q66Oo--QedAN1B4E1k&usqp=CAU",
     },
-  ];
+  ]; */
   return (
     <NativeBaseProvider>
       <Box
@@ -54,7 +70,7 @@ export default function ListaCuidadores({ navigation }) {
         bg="#fff"
         alignItems="center"
         justifyContent="center"
-        margin={20}
+        margin={0}
       >
         <Image
           size={150}
@@ -68,7 +84,7 @@ export default function ListaCuidadores({ navigation }) {
           Cuidadores
         </Heading>
         <FlatList
-          data={data}
+          data={personas}
           renderItem={({ item }) => (
             <Box
               borderBottomWidth="1"
@@ -91,7 +107,7 @@ export default function ListaCuidadores({ navigation }) {
                   <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
-                      navigation.navigate("Persona");
+                      navigation.navigate("Persona", { item: item });
                     }}
                   >
                     <Text
@@ -101,13 +117,13 @@ export default function ListaCuidadores({ navigation }) {
                       color="coolGray.800"
                       bold
                     >
-                      {item.fullName}
+                      {item.nombreApellido}
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
-                      navigation.navigate("Persona");
+                      navigation.navigate("Persona", { item: item });
                     }}
                   >
                     <Text
@@ -116,7 +132,7 @@ export default function ListaCuidadores({ navigation }) {
                         color: "warmGray.200",
                       }}
                     >
-                      {item.recentText}
+                      {item.email}
                     </Text>
                   </TouchableOpacity>
                 </VStack>
@@ -124,7 +140,7 @@ export default function ListaCuidadores({ navigation }) {
                 <TouchableOpacity
                   style={styles.button}
                   onPress={() => {
-                    navigation.navigate("Persona");
+                    navigation.navigate("Persona", { item: item });
                   }}
                 >
                   <Text
@@ -144,7 +160,7 @@ export default function ListaCuidadores({ navigation }) {
           keyExtractor={(item) => item.id}
         />
         <Box
-          margin={5}
+          margin={1}
           onPress={() => {
             //ACA TENEMOS QUE HACER EL PUSH A LA API Y AGREGAR UN CUIDADOR O IR A UNA PANTALLA DDE METES LOS CAMPOS Y AGREGAS
           }}

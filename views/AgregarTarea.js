@@ -27,10 +27,9 @@ export default function AgregarTarea({ navigation }) {
 
   const addTarea = () => {
     console.log("Click en boton guardar tarea");
-
-    console.log(tareasService);
-
-    tareasService.addTarea(tarea).then((res) => {
+    const idd = route.params.id;
+    console.log(tarea);
+    gastosService.addTarea(tarea).then((res) => {
       console.log(res);
       navigation.goBack();
     });
@@ -60,13 +59,15 @@ export default function AgregarTarea({ navigation }) {
               setTarea({ ...tarea, fechaCaducidad: text })
             }
           />
+          <Input value={() => setTarea({ ...tarea, id: route.params.id })} />
         </Stack>
 
         <Button
           success
           margin={1}
           onPress={() => {
-            addTarea;
+            addTarea(tarea);
+            navigation.goBack();
           }}
           disabled={notValid}
         >

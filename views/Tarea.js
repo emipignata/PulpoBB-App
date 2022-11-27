@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View ,navigation, route} from "react-native";
 import { useEffect, useState } from "react";
 import {getTareas} from "../services/Tareas"
 import {
@@ -16,7 +16,7 @@ import {
 //lo manejamos con state y effect?? 
 //const [tareas,setTareas]=useState(tareas)
 //useEffect(()=>{setTareas(()=>{getTareas})},tareas)
-export default function Tarea({navigation}) {
+export default function Tarea({navigation,route}) {
   return (
     <NativeBaseProvider>
       <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
@@ -34,25 +34,25 @@ export default function Tarea({navigation}) {
         <Stack p="4" space={3}>
           <Stack space={2}>
             <Heading color="emerald.400" size="lg" ml="-1">
-              Comida del BB a las 19hs
+            {route.params.item.detalle} 
             </Heading>
             <Text fontSize="xs" _light={{
             color: "violet.500"
           }} _dark={{
             color: "violet.400"
           }} fontWeight="500" ml="-0.5" mt="-1">
-              Cuidado que se ensucia la ropa 
+              {route.params.item.nombreCreador} 
             </Text>
           </Stack>
           <Text fontWeight="400">
-            Descripcion detallada de la tarea. Darle de comer Pizza al bebe no es una buena idea, peroa los pulpos les encanta la comida de mar...
+          {route.params.item.estado} 
           </Text>
           <HStack alignItems="center" space={4} justifyContent="space-between">
             <HStack alignItems="center">
               <Text color="coolGray.600" _dark={{
               color: "warmGray.200"
             }} fontWeight="400">
-                6 mins ago
+                {route.params.item.fechaCaducidad} 
               </Text>
             </HStack>
           </HStack>

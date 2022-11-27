@@ -5,18 +5,19 @@ import {
   Input,
   Stack,
   Text,
+  Hidden,
 } from "native-base";
-
+import { navigation, routeStyle, TextInput, Style } from "react-native";
 import { useCallback, useContext, useEffect, useState } from "react";
 import gastosService from "../services/Gastos";
 
-export default function AgregarGasto({ navigation }) {
+export default function AgregarGasto({ navigation, route }) {
   const [gasto, setGasto] = useState({});
   const [notValid, setNotValid] = useState(true);
 
   useEffect(
     useCallback(() => {
-      const isComplete = gasto.monto && gasto.detalle;
+      const isComplete = gasto.monto && gasto.titulo && gasto.detalle;
       setNotValid(!isComplete);
     }),
     [gasto]
@@ -24,8 +25,8 @@ export default function AgregarGasto({ navigation }) {
 
   const addGasto = () => {
     console.log("Click en boton guardar gasto");
-    console.log(gastosService);
-
+    const idd = route.params.id;
+    console.log(gasto);
     gastosService.addGasto(gasto).then((res) => {
       console.log(res);
       navigation.goBack();
@@ -38,10 +39,9 @@ export default function AgregarGasto({ navigation }) {
         <Stack space={4} w="75%" maxW="300px" mx="auto">
           <Input
             size="md"
-            placeholder="Monto"
-            keyboardType={"decimal-pad"}
-            value={gasto.monto}
-            onChangeText={(text) => setGasto({ ...gasto, monto: text })}
+            placeholder="Titulo"
+            value={gasto.titulo}
+            onChangeText={(text) => setGasto({ ...gasto, titulo: text })}
           />
           <Input
             size="md"
@@ -49,13 +49,23 @@ export default function AgregarGasto({ navigation }) {
             value={gasto.detalle}
             onChangeText={(text) => setGasto({ ...gasto, detalle: text })}
           />
+          <Input
+            size="md"
+            placeholder="Monto"
+            keyboardType={"decimal-pad"}
+            value={gasto.monto}
+            onChangeText={(text) => setGasto({ ...gasto, monto: text })}
+          />
+          
+          <Input value={() => setGasto({ ...gasto, id: route.params.id })} />
         </Stack>
 
         <Button
           success
           margin={1}
           onPress={() => {
-            addGasto()
+            addGasto(gasto);
+            navigation.goBack();
           }}
           disabled={notValid}
         >

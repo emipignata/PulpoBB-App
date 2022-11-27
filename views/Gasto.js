@@ -16,17 +16,8 @@ import {
 } from "native-base";
 
 
-//COMO RECIBIR UN ITEM DE LA FLATLIST SI TENEMOS LE ID LO BUSCAMOS CON EL GETGASTO(ID) SI RECIBIMOS EL ITEM ENTERO PODRIAMOS USARLO Y SERIA MEJOR OPCION
 export default function Gasto({navigation,route}) {
 
-  /* useEffect(() => {
-    Gastos.getGasto(item.id)
-    .then((data)=>{
-      console.log(data)
-      setGastos(data)
-      console.log()
-    }).catch((err)=>console.error(err))
-  }, []); */
 
   return (
     <NativeBaseProvider>
@@ -59,19 +50,17 @@ export default function Gasto({navigation,route}) {
         <Stack p="4" space={3}>
           <Stack space={2}>
             <Heading size="md" ml="-1">
-            {route.params.item.detalle} 
+            {route.params.item.titulo} 
             </Heading>
             <Text fontSize="xs" _light={{
             color: "violet.500"
           }} _dark={{
             color: "violet.400"
           }} fontWeight="500" ml="-0.5" mt="-1">
-              Descripción del gasto API 
+             {route.params.item.detalle}
             </Text>
           </Stack>
-          <Text fontWeight="400">
-            Nombre del creador del gasto API 
-          </Text>
+         
           <HStack alignItems="center" space={4} justifyContent="space-between">
             <HStack alignItems="center">
               <Text color="coolGray.600" _dark={{

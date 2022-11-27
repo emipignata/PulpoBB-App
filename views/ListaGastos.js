@@ -1,5 +1,5 @@
-import { StyleSheet, Text, TouchableOpacity, keyExtractor } from "react-native";
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import Gastos from "../services/Gastos";
 import {
   NativeBaseProvider,
@@ -14,8 +14,10 @@ import {
 } from "native-base";
 import { useEffect, useState } from "react";
 
-export default function ListaGastos({ navigation,route }) {
+export default function ListaGastos({ navigation, route }) {
   const [gastos, setGastos] = useState([]);
+
+  let generarId = () => gastos.length + 1;
 
   useEffect(() => {
     Gastos.getGastos()
@@ -26,7 +28,9 @@ export default function ListaGastos({ navigation,route }) {
       })
       .catch((err) => console.error(err));
   }, []);
- const nav = useNavigation()
+
+  const nav = useNavigation();
+
   return (
     <NativeBaseProvider>
       <Box flex={1} bg="#fff" justifyContent="center" margin={3}>
@@ -46,14 +50,13 @@ export default function ListaGastos({ navigation,route }) {
               pr={["0", "5"]}
               py="2"
             >
-              
               <HStack space={[2, 3]} justifyContent="space-between">
                 <Avatar size="48px" name="money" />
                 <VStack>
                   <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
-                      navigation.navigate("Gasto");
+                      navigation.navigate("Gasto", { item: item });
                     }}
                   >
                     <Text
@@ -63,14 +66,13 @@ export default function ListaGastos({ navigation,route }) {
                       color="coolGray.800"
                       bold
                     >
-                      {item.detalle} {/* ACA TRAEMOS LA DATA DE UN SOLO ITEM */}
+                      {item.titulo} {/* ACA TRAEMOS LA DATA DE UN SOLO ITEM */}
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
-                   
                     style={styles.button}
                     onPress={() => {
-                      navigation.navigate("Gasto");
+                      navigation.navigate("Gasto", { item: item });
                       console.log(item.id);
                     }}
                   >
@@ -88,7 +90,6 @@ export default function ListaGastos({ navigation,route }) {
                 <TouchableOpacity
                   style={styles.button}
                   onPress={() => {
-                    console.log("estoy onpres ok")
                     navigation.navigate("Gasto", { item: item });
                   }}
                 >
@@ -104,7 +105,6 @@ export default function ListaGastos({ navigation,route }) {
                   </Text>
                 </TouchableOpacity>
               </HStack>
-    
             </Box>
           )}
           keyExtractor={(item) => item.id}
@@ -114,7 +114,7 @@ export default function ListaGastos({ navigation,route }) {
             success
             margin={1}
             onPress={() => {
-              navigation.navigate("AgregarGasto");
+              navigation.navigate("AgregarGasto", { id: generarId() });
             }}
           >
             <Text>Agregar Gasto</Text>

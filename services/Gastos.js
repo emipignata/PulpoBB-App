@@ -2,15 +2,13 @@ import React, { useEffect, useState } from "react";
 
 //const [gastos,getGastos]=useState(gastos)
 
-const BASE_URL = `https://01c1-181-28-88-61.sa.ngrok.io/gastos`;
+const BASE_URL = `https://6826-181-28-88-61.sa.ngrok.io/gastos`;
 //aca la raiz es la que me da NGROK
 //CADA VEZ QUE SE REFRESCA NGROK HAY QUE CAMBIAR LAS URL QUE NOS DEVUELVE
 //levantar la API con nodemon
 // INICIALIZAR NGROK en la consola de ngrok >>>>> ngrok http "nro de puerto ej 4000"
 
 const getGastos = () => {
-  //``
-  // Ejemplo con FETCH
   return new Promise((resolve, reject) => {
     fetch(`${BASE_URL}`)
       .then((res) => res.json())
@@ -31,7 +29,7 @@ const getGasto = (id) => {
       .catch((error) => reject(err));
   });
 };
-//aca hay que ver comop hacer el post
+//aca hay que ver como hacer el post
 
 const addGasto = (gasto) => {
   const option = {
@@ -39,10 +37,6 @@ const addGasto = (gasto) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(gasto),
   };
-
-  // el PUT es igual a POST
-  
-
   return new Promise((resolve, reject) => {
     fetch(`${BASE_URL}`,option)
       .then((res) => res.json())
@@ -52,7 +46,6 @@ const addGasto = (gasto) => {
       .catch((err) => reject(err));
   });
 };
-//DELETE TAREA????? como se hace??? RECIBE ID
 
 const editarGasto = (gasto) => {
   const option = {

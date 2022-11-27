@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, navigation, route } from "react-native";
 import {
   NativeBaseProvider,
   Box,
@@ -12,7 +12,7 @@ import {
   Stack
 } from "native-base";
 
-export default function Persona() {
+export default function Persona({navigation,route}) {
   return (
     <NativeBaseProvider>
       <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
@@ -38,24 +38,24 @@ export default function Persona() {
           fontWeight: "700",
           fontSize: "xs"
         }} position="absolute" bottom="0" px="3" py="1.5">
-            Admin | Cuidador
+            {route.params.item.rol} 
           </Center>
         </Box>
         <Stack p="4" space={3}>
           <Stack space={2}>
             <Heading size="md" ml="-1">
-              Cuidador: Aru
+              Cuidador: {route.params.item.nombreApellido}
             </Heading>
             <Text fontSize="xs" _light={{
             color: "violet.500"
           }} _dark={{
             color: "violet.400"
           }} fontWeight="500" ml="-0.5" mt="-1">
-              Tia fana del Yoga 
+              Vinculo:{route.params.item.vinculo}
             </Text>
           </Stack>
           <Text fontWeight="400">
-            Agregar dirtección y tareas asignadas
+          {route.params.item.email}
           </Text>
           <HStack alignItems="center" space={4} justifyContent="space-between">
             <HStack alignItems="center">

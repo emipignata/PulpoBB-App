@@ -1,183 +1,133 @@
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
-import { useToast } from "native-base";
-import * as React from "react";
+import { useNavigation } from "@react-navigation/native";
+import Tareas from "../services/Tareas";
 import {
   NativeBaseProvider,
   Box,
+  Button,
   HStack,
+  Spacer,
   Heading,
   VStack,
-  Input,
-  Icon,
-  IconButton,
-  Checkbox,
-  Button,
+  FlatList,
+  Avatar,
 } from "native-base";
-import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import { useEffect, useState } from "react";
 
-export default function ListaTareas({ navigation }) {
-  const instState = [
-    {
-      title: "Code",
-      isCompleted: true,
-    },
-    {
-      title: "Meeting with team at 9",
-      isCompleted: false,
-    },
-    {
-      title: "Check Emails",
-      isCompleted: false,
-    },
-    {
-      title: "Write an article",
-      isCompleted: false,
-    },
-  ];
-  const [list, setList] = React.useState(instState);
-  const [inputValue, setInputValue] = React.useState("");
-  const toast = useToast();
+export default function ListaTareas({ navigation, route }) {
+  const [tareas, setTareas] = useState([]);
 
-  const addItem = (title) => {
-    if (title === "") {
-      toast.show({
-        title: "Please Enter Text",
-        status: "warning",
-      });
-      return;
-    }
+  let generarId = () => tareas.length + 1;
 
-    setList((prevList) => {
-      return [
-        ...prevList,
-        {
-          title: title,
-          isCompleted: false,
-        },
-      ];
-    });
-  };
+  useEffect(() => {
+    Tareas.getTareas()
+      .then((data) => {
+        console.log(data);
+        setTareas(data);
+        console.log(data);
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
-  const handleDelete = (index) => {
-    setList((prevList) => {
-      const temp = prevList.filter((_, itemI) => itemI !== index);
-      return temp;
-    });
-  };
+  const nav = useNavigation();
 
-  const handleStatusChange = (index) => {
-    setList((prevList) => {
-      const newList = [...prevList];
-      newList[index].isCompleted = !newList[index].isCompleted;
-      return newList;
-    });
-  };
   return (
     <NativeBaseProvider>
-      <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
-        <Box maxW="300" w="100%">
-          <Heading mb="3" size="md">
-            {/* Agrega tareas para que tu PulpoBB siempre esté a gusto: */}
-            Listado de Tareas
-          </Heading>
-          <VStack space={4}>
-            {/* <HStack space={2}>
-              <Input
-                flex={1}
-                onChangeText={(v) => setInputValue(v)}
-                value={inputValue}
-                placeholder="Agrega tu Tarea"
-              />
-              <IconButton
-                borderRadius="lg"
-                variant="solid"
-                icon={
-                  <Icon
-                    as={Ionicons}
-                    name="add-circle-outline"
-                    size="lg"
-                    color="warmGray.50"
-                  />
-                }
-                onPress={() => {
-                  addItem(inputValue);
-                  setInputValue("");
-                  //ACA deberiamos enviar a la API la tarea tambien!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                }}
-              />
-            </HStack> */}
-            <VStack space={2}>
-              {list.map((item, itemI) => (
-                <HStack
-                  w="100%"
-                  justifyContent="space-between"
-                  alignItems="center"
-                  key={item.title + itemI.toString()}
-                >
-                  <Checkbox
-                    aria-label="checked"
-                    isChecked={item.isCompleted}
-                    onChange={() => handleStatusChange(itemI)}
-                    value={item.title}
-                  ></Checkbox>
+      <Box flex={1} bg="#fff" justifyContent="center" margin={3}>
+        <Heading fontSize="xl" p="4" pb="3">
+          Lista de Tareas
+        </Heading>
+        <FlatList
+          data={tareas}
+          renderItem={({ item }) => (
+            <Box
+              borderBottomWidth="1"
+              _dark={{
+                borderColor: "muted.50",
+              }}
+              borderColor="muted.800"
+              pl={["0", "4"]}
+              pr={["0", "5"]}
+              py="2"
+            >
+              <HStack space={[2, 3]} justifyContent="space-between">
+                <Avatar size="48px" name="money" />
+                <VStack>
                   <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
-                      navigation.navigate("Tarea");
+                      navigation.navigate("Tarea", { item: item });
                     }}
                   >
                     <Text
-                      width="100%"
-                      flexShrink={1}
-                      textAlign="left"
-                      mx="2"
-                      strikeThrough={item.isCompleted}
-                      _light={{
-                        color: item.isCompleted ? "gray.400" : "coolGray.800",
-                      }}
                       _dark={{
-                        color: item.isCompleted ? "gray.400" : "coolGray.50",
+                        color: "warmGray.50",
                       }}
-                      onPress={() => handleStatusChange(itemI)}
+                      color="coolGray.800"
+                      bold
                     >
-                      {item.title}
+                      {item.titulo} {/* ACA TRAEMOS LA DATA DE UN SOLO ITEM */}
                     </Text>
                   </TouchableOpacity>
-
-                  <IconButton
-                    size="sm"
-                    colorScheme="trueGray"
-                    icon={
-                      <Icon
-                        as={Ionicons}
-                        name="trash"
-                        size="xs"
-                        color="trueGray.400"
-                      />
-                    }
-                    onPress={() => handleDelete(itemI)}
-                  />
-                </HStack>
-              ))}
-            </VStack>
-          </VStack>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                      navigation.navigate("Tarea", { item: item });
+                      console.log(item.id);
+                    }}
+                  >
+                    <Text
+                      color="coolGray.600"
+                      _dark={{
+                        color: "warmGray.200",
+                      }}
+                    >
+                      {item.detalle}
+                    </Text>
+                  </TouchableOpacity>
+                </VStack>
+                <Spacer />
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => {
+                    navigation.navigate("Tarea", { item: item });
+                  }}
+                >
+                  <Text
+                    fontSize="xs"
+                    _dark={{
+                      color: "warmGray.50",
+                    }}
+                    color="coolGray.800"
+                    alignSelf="flex-start"
+                  >
+                    
+                  </Text>
+                </TouchableOpacity>
+              </HStack>
+            </Box>
+          )}
+          keyExtractor={(item) => item.id}
+        />
+        <Box margin={5}>
+          <Button
+            success
+            margin={1}
+            onPress={() => {
+              navigation.navigate("AgregarTarea", { id: generarId() });
+            }}
+          >
+            <Text>Agregar Tarea</Text>
+          </Button>
+          <Button title="GoBack" onPress={() => navigation.goBack()}>
+            <Text>Volver atrás</Text>
+          </Button>
         </Box>
-        <Button
-          success
-          margin={1}
-          onPress={() => {
-            navigation.navigate("AgregarTarea");
-          }}
-        >
-          <Text>Agregar Tarea</Text>
-        </Button>
-        <Button title="GoBack" onPress={() => navigation.goBack()}>
-          <Text>Volver atrás</Text>
-        </Button>
       </Box>
     </NativeBaseProvider>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

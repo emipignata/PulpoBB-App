@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 
 //const [tareas,getTareas]=useState(tareas)
 
-const BASE_URL = `https://pokeapi.co/api/v2/berry/`;
+const BASE_URL = `https://6826-181-28-88-61.sa.ngrok.io/tareas`;
 
 const getTareas = () => {
-  //``
-  // Ejemplo con FETCH
   return new Promise((resolve, reject) => {
     fetch(`${BASE_URL}`)
       .then((res) => res.json())
@@ -16,6 +14,7 @@ const getTareas = () => {
       .catch((err) => reject(err));
   });
 };
+
 const getTarea = (id) => {
   return new Promise((resolve, reject) => {
     fetch(`${BASE_URL}/${id}`)
@@ -26,14 +25,22 @@ const getTarea = (id) => {
       .catch((error) => reject(err));
   });
 };
-//aca hay que ver comop hacer el post
 const addTarea = (tarea) => {
+  const option = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(tarea),
+  };
   return new Promise((resolve, reject) => {
-    tareas.push(tarea);
-    return resolve({ ...tarea, status: "added" });
+    fetch(`${BASE_URL}`,option)
+      .then((res) => res.json())
+      .then((data) => {
+        return resolve(data);
+      })
+      .catch((err) => reject(err));
   });
 };
-//DELETE TAREA????? como se hace??? RECIBVE ID
+//DELETE TAREA??
 
 export default {
   getTareas,

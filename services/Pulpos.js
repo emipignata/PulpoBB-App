@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import {BASE_URL} from "@env"
 
 const getPulpos = () => {
-  //GET PULPOS
   return new Promise((resolve, reject) => {
+
     fetch(`${BASE_URL}/pulpos`)
       .then((res) => res.json())
       .then((data) => {

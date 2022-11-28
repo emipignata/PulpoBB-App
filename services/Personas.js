@@ -3,9 +3,10 @@ import {BASE_URL} from "@env"
 
 const getPersonas = () => {
     return new Promise((resolve, reject) => {
+      
       fetch(`${BASE_URL}/personas`)
-        .then((res) => res.json())
-        .then((data) => {
+      .then((res) => res.json())
+      .then((data) => {
           return resolve(data);
         })
         .catch((err) => reject(err));

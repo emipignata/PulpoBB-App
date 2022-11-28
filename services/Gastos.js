@@ -8,6 +8,7 @@ import {BASE_URL} from '@env'
 
 const getGastos = () => {
   return new Promise((resolve, reject) => {
+    
     fetch(`${BASE_URL}/gastos`)
       .then((res) => res.json())
       .then((data) => {

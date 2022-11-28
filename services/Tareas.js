@@ -3,6 +3,7 @@ import {BASE_URL} from "@env"
 
 const getTareas = () => {
   return new Promise((resolve, reject) => {
+
     fetch(`${BASE_URL}/tareas`)
       .then((res) => res.json())
       .then((data) => {

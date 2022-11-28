@@ -5,15 +5,20 @@ import {
   HStack,
   Input,
   Stack,
-  Switch,
   Text,
 } from "native-base";
 import { useCallback, useContext, useEffect, useState } from "react";
 import personasService from "../services/Personas";
+import { Switch } from 'react-native';
 
 export default function AgregarPersona({ navigation, route }) {
   const [persona, setPersona] = useState({});
   const [notValid, setNotValid] = useState(true);
+  const [rol, setRol] = useState(false);
+
+  const toggleSwitch = () => {
+    setRol(!rol)
+  }
 
   useEffect(
     useCallback(() => {
@@ -25,8 +30,10 @@ export default function AgregarPersona({ navigation, route }) {
   );
 
   const addPersona = () => {
-    console.log("Click en boton guardar persona");
-    console.log(persona);
+    setPersona({ ...persona, id: route.params.id })
+    console.log(persona)
+    // const rolPersona = rol ? "Cuidador" : "Administrador"
+    // setPersona({ ...persona, rol: rolPersona })
     personasService.addPersona(persona).then((res) => {
       console.log(res);
       navigation.goBack();
@@ -45,7 +52,7 @@ export default function AgregarPersona({ navigation, route }) {
               setPersona({ ...persona, nombreApellido: text })
             }
           />
-         
+
           <Input
             size="md"
             placeholder="Email"
@@ -59,12 +66,23 @@ export default function AgregarPersona({ navigation, route }) {
             value={persona.vinculo}
             onChangeText={(text) => setPersona({ ...persona, vinculo: text })}
           />
-          <Input
+          {/* <Input
             size="md"
             placeholder="Rol: Admin | Cuidador"
             value={persona.rol}
             onChangeText={(text) => setPersona({ ...persona, rol: text })}
-          />
+          /> */}
+          <HStack alignItems="center" justifyContent="center">
+            <Text>Admin</Text>
+            <Switch
+              trackColor={{ false: "#81b0ff", true: "#81b0ff" }}
+              thumbColor={rol ? "#f4f3f4" : "#f4f3f4"}
+              onValueChange={toggleSwitch}
+              value={rol}
+            />
+            <Text>Cuidador</Text>
+          </HStack>
+
         </Stack>
         <Button
           success
@@ -82,11 +100,11 @@ export default function AgregarPersona({ navigation, route }) {
           <Text>Cancelar</Text>
         </Button>
       </Box>
-      <Input
-            isDisabled
-            placeholder="id *No es necesario completar"
-            value={() => setPersona({ ...persona, id: route.params.id })}
-          />
+      {/* <Input
+        isDisabled
+        placeholder="id *No es necesario completar"
+        value={() => setPersona({ ...persona, id: route.params.id })}
+      /> */}
     </NativeBaseProvider>
   );
 }

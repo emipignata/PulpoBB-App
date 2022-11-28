@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
+import {BASE_URL} from '@env'
 
-
-const BASE_URL = `https://0751-181-28-88-61.sa.ngrok.io/gastos`;
 //aca la raiz es la que me da NGROK
 //CADA VEZ QUE SE REFRESCA NGROK HAY QUE CAMBIAR LAS URL QUE NOS DEVUELVE
 //levantar la API con nodemon
@@ -9,7 +8,7 @@ const BASE_URL = `https://0751-181-28-88-61.sa.ngrok.io/gastos`;
 
 const getGastos = () => {
   return new Promise((resolve, reject) => {
-    fetch(`${BASE_URL}`)
+    fetch(`${BASE_URL}/gastos`)
       .then((res) => res.json())
       .then((data) => {
         return resolve(data);
@@ -20,7 +19,7 @@ const getGastos = () => {
 //OK
 const getGasto = (id) => {
   return new Promise((resolve, reject) => {
-    fetch(`${BASE_URL}/${id}`)
+    fetch(`${BASE_URL}/gastos/${id}`)
       .then((res) => res.json())
       .then((data) => {
         return resolve(data);
@@ -37,7 +36,7 @@ const addGasto = (gasto) => {
     body: JSON.stringify(gasto),
   };
   return new Promise((resolve, reject) => {
-    fetch(`${BASE_URL}`,option)
+    fetch(`${BASE_URL}/gastos`,option)
       .then((res) => res.json())
       .then((data) => {
         return resolve(data);

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-
-
-const BASE_URL = `https://0751-181-28-88-61.sa.ngrok.io/pulpos`;
+import {BASE_URL} from "@env"
 
 const getPulpos = () => {
   //GET PULPOS
   return new Promise((resolve, reject) => {
-    fetch(`${BASE_URL}`)
+    fetch(`${BASE_URL}/pulpos`)
       .then((res) => res.json())
       .then((data) => {
         return resolve(data);
@@ -16,7 +14,7 @@ const getPulpos = () => {
 };
 const getPulpo = (id) => {
   return new Promise((resolve, reject) => {
-    fetch(`${BASE_URL}/${id}`)
+    fetch(`${BASE_URL}/pulpos/${id}`)
       .then((res) => res.json())
       .then((data) => {
         return resolve(data);
@@ -32,7 +30,7 @@ const addPulpo = (pulpo) => {
     body: JSON.stringify(pulpo),
   };
   return new Promise((resolve, reject) => {
-    fetch(`${BASE_URL}`,option)
+    fetch(`${BASE_URL}/pulpos`,option)
       .then((res) => res.json())
       .then((data) => {
         return resolve(data);

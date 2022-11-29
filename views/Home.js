@@ -57,7 +57,7 @@ export default function Home({ navigation }) {
               navigation.navigate("Mapa");
             }}
           >
-            <Text fontSize="xl">Mapa</Text>
+            <Text fontSize="xl">Puntos de Interes</Text>
           </Button>
 
           <Logout />

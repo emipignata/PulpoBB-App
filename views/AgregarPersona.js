@@ -25,8 +25,7 @@ export default function AgregarPersona({ navigation, route }) {
   );
 
   const addPersona = () => {
-    console.log("Click en boton guardar persona");
-    console.log(persona);
+    setPersona({ ...persona, id: route.params.id })
     personasService.addPersona(persona).then((res) => {
       console.log(res);
       navigation.goBack();
@@ -82,11 +81,11 @@ export default function AgregarPersona({ navigation, route }) {
           <Text>Cancelar</Text>
         </Button>
       </Box>
-      <Input
+      {/* <Input
             isDisabled
             placeholder="id *No es necesario completar"
             value={() => setPersona({ ...persona, id: route.params.id })}
-          />
+          /> */}
     </NativeBaseProvider>
   );
 }

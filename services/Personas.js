@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-
-
-const BASE_URL = `https://0751-181-28-88-61.sa.ngrok.io/personas`;
+import {BASE_URL} from "@env" 
 
 const getPersonas = () => {
     return new Promise((resolve, reject) => {
-      fetch(`${BASE_URL}`)
-        .then((res) => res.json())
-        .then((data) => {
+      
+      fetch(`${BASE_URL}/personas`)
+      .then((res) => res.json())
+      .then((data) => {
           return resolve(data);
         })
         .catch((err) => reject(err));
@@ -16,7 +15,7 @@ const getPersonas = () => {
   //OK
   const getPersona = (id) => {
     return new Promise((resolve, reject) => {
-      fetch(`${BASE_URL}/${id}`)
+      fetch(`${BASE_URL}/personas/${id}`)
         .then((res) => res.json())
         .then((data) => {
           return resolve(data);
@@ -33,7 +32,7 @@ const getPersonas = () => {
       body: JSON.stringify(persona),
     };
     return new Promise((resolve, reject) => {
-      fetch(`${BASE_URL}`,option)
+      fetch(`${BASE_URL}/personas`,option)
         .then((res) => res.json())
         .then((data) => {
           return resolve(data);

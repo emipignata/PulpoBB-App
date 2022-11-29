@@ -56,10 +56,6 @@ export default function App() {
     });
   }), [auth])
 
-
-
-
-
   return (
       <Authcontext.Provider value={{auth, setAuth}}>
         <NavigationContainer>
@@ -70,7 +66,7 @@ export default function App() {
                   <Stack.Screen name="Home" component={Home} />
                 </>
               ) : (
-                <Stack.Screen name="LoginG" component={LoginG} />
+                <Stack.Screen name="Login" component={LoginG} />
               )}
               <Stack.Screen name="ListaCuidadores" component={ListaCuidadores} />
               <Stack.Screen name="ListaTareas" component={ListaTareas} />

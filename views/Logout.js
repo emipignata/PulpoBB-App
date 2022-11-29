@@ -19,7 +19,7 @@ const Logout = ({ navigation, route }) => {
   return (
     <View>
       <Button success title="Logout" margin={1} onPress={logout}>
-        <Text>Logout</Text>
+        <Text fontSize="xl">Logout</Text>
       </Button>
 
       {/* <Button

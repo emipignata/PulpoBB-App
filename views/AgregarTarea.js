@@ -16,7 +16,6 @@ export default function AgregarTarea({ navigation,route }) {
   useEffect(
     useCallback(() => {
       const isComplete =
-        tarea.titulo &&
         tarea.detalle &&
         tarea.fechaCaducidad 
       setNotValid(!isComplete);
@@ -38,15 +37,15 @@ export default function AgregarTarea({ navigation,route }) {
     <NativeBaseProvider>
       <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
         <Stack space={4} w="75%" maxW="300px" mx="auto">
-          <Input
+        {/*   <Input
             size="md"
             placeholder="Titulo"
             value={tarea.titulo}
             onChangeText={(text) => setTarea({ ...tarea, titulo: text })}
-          />
+          /> */}
           <Input
             size="md"
-            placeholder="Descripción"
+            placeholder="Tarea"
             value={tarea.detalle}
             onChangeText={(text) => setTarea({ ...tarea, detalle: text })}
           />

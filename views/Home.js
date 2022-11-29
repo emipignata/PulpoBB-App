@@ -1,17 +1,15 @@
 import { StyleSheet, View, Image } from "react-native";
-import { NativeBaseProvider, Box, Button, Text} from "native-base";
+import { NativeBaseProvider, Box, Button, Text } from "native-base";
 import Logout from "./Logout";
 
 export default function Home({ navigation }) {
   return (
     <NativeBaseProvider>
       <Box style={styles.boxHeader}>
-        <Text 
-          fontSize="5xl"
-        >Pulpo-BB</Text>
+        <Text fontSize="5xl">Pulpo-BB</Text>
         <Image
           source={require("../assets/PulpoIcon.png")}
-          style={{ borderRadius: 400/2}}
+          style={{ borderRadius: 400 / 2 }}
         />
       </Box>
       <Box style={styles.container}>
@@ -76,12 +74,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  
+
   boxHeader: {
     // flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 0
-  }
+    marginBottom: 0,
+  },
 });

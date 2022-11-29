@@ -14,6 +14,7 @@ const getTareas = () => {
 };
 
 const getTarea = (id) => {
+
   return new Promise((resolve, reject) => {
     fetch(`${BASE_URL}/tareas/${id}`)
       .then((res) => res.json())
@@ -24,12 +25,14 @@ const getTarea = (id) => {
   });
 };
 const addTarea = (tarea) => {
+
   const option = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(tarea),
   };
   return new Promise((resolve, reject) => {
+    
     fetch(`${BASE_URL}/tareas`,option)
       .then((res) => res.json())
       .then((data) => {

@@ -101,9 +101,7 @@ export default function ListaTareas({ navigation, route }) {
                     }}
                     color="coolGray.800"
                     alignSelf="flex-start"
-                  >
-                    
-                  </Text>
+                  ></Text>
                 </TouchableOpacity>
               </HStack>
             </Box>

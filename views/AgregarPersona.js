@@ -2,13 +2,11 @@ import {
   NativeBaseProvider,
   Box,
   Button,
-  HStack,
   Input,
   Stack,
-  Switch,
   Text,
 } from "native-base";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import personasService from "../services/Personas";
 
 export default function AgregarPersona({ navigation, route }) {
@@ -25,7 +23,8 @@ export default function AgregarPersona({ navigation, route }) {
   );
 
   const addPersona = () => {
-    setPersona({ ...persona, id: route.params.id })
+    setPersona({ ...persona, id: route.params._id })
+    console.log(persona);
     personasService.addPersona(persona).then((res) => {
       console.log(res);
       navigation.goBack();

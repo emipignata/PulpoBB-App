@@ -1,59 +1,72 @@
-import { StyleSheet, Text, View } from "react-native";
-import { NativeBaseProvider, Box, Button } from "native-base";
+import { StyleSheet, View, Image } from "react-native";
+import { NativeBaseProvider, Box, Button, Text } from "native-base";
 import Logout from "./Logout";
+import Authcontext, { authData } from "../services/Authcontext";
+import { useContext } from "react";
 
 export default function Home({ navigation }) {
+  
+  const { auth, setAuth } = useContext(Authcontext);
+ 
   return (
     <NativeBaseProvider>
-      <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
-       
-        <Button
-          success
-          margin={1}
-          onPress={() => {
-            navigation.navigate("ListaCuidadores");
-          }}
-        >
-          <Text>Cuidadores</Text>
-        </Button>
-        <Button
-          success
-          margin={1}
-          onPress={() => {
-            navigation.navigate("ListaPulpos");
-          }}
-        >
-          <Text>Pulpos</Text>
-        </Button>
-        <Button
-          success
-          margin={1}
-          onPress={() => {
-            navigation.navigate("ListaGastos");
-          }}
-        >
-          <Text>Gastos</Text>
-        </Button>
-        <Button
-          success
-          margin={1}
-          onPress={() => {
-            navigation.navigate("ListaTareas");
-          }}
-        >
-          <Text>Tareas</Text>
-        </Button>
-        <Button
-          success
-          margin={1}
-          onPress={() => {
-            navigation.navigate("Mapa");
-          }}
-        >
-          <Text>Mapa</Text>
-        </Button>
-      
-        <Logout/>
+      <Box style={styles.boxHeader}>
+        <Text fontSize="5xl">Pulpo-BB</Text> 
+         <Image
+          source={require("../assets/PulpoIcon.png")}
+          style={{ borderRadius: 400 / 2 }}
+        />
+      </Box>
+      <Box style={styles.container}>
+        <View>
+          <Button
+            size="lg"
+            margin={1}
+            onPress={() => {
+              navigation.navigate("ListaCuidadores");
+            }}
+          >
+            <Text fontSize="xl">Cuidadores</Text>
+          </Button>
+          <Button
+            size="lg"
+            margin={1}
+            onPress={() => {
+              navigation.navigate("ListaPulpos");
+            }}
+          >
+            <Text fontSize="xl">Pulpos</Text>
+          </Button>
+          <Button
+            size="lg"
+            margin={1}
+            onPress={() => {
+              navigation.navigate("ListaGastos");
+            }}
+          >
+            <Text fontSize="xl">Gastos</Text>
+          </Button>
+          <Button
+            size="lg"
+            margin={1}
+            onPress={() => {
+              navigation.navigate("ListaTareas");
+            }}
+          >
+            <Text fontSize="xl">Tareas</Text>
+          </Button>
+          <Button
+            size="lg"
+            margin={1}
+            onPress={() => {
+              navigation.navigate("Mapa");
+            }}
+          >
+            <Text fontSize="xl">Puntos de Interes</Text>
+          </Button>
+
+          <Logout />
+        </View>
       </Box>
     </NativeBaseProvider>
   );
@@ -65,5 +78,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  boxHeader: {
+    // flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 0,
   },
 });

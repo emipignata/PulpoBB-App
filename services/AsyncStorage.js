@@ -6,11 +6,15 @@ const storeData = async (key, value) => {
   try {
     if (isObject(value)) {
       const jsonvalue = JSON.stringify(value);
-      await AsyncStorage.setItem(key, jsonvalue);
+      await AsyncStorage.setItem(key, jsonvalue);     
     } else {
       await AsyncStorage.setItem(key, value);
+      console.log('STORE DATA OK en asyncStorage',key)
+      console.log(getData(value))
     }
-  } catch (error) {}
+  } catch (error) {
+    console.log('no persistio la data en asyncStorage', error)
+  }
 };
 
 const getData = async (key) => {
@@ -18,7 +22,7 @@ const getData = async (key) => {
     const jsonvalue = await AsyncStorage.getItem(key);
     return jsonvalue ? JSON.parse(jsonvalue) : null;
   } catch (error) {
-    // error handling
+    console.log('AUN NO hay DATA en GETDATA en asyncStorage', error)// error handling
   }
 };
 

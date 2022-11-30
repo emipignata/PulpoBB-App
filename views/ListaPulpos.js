@@ -35,6 +35,7 @@ export default function ListaPulpos({ navigation, route }) {
         </Heading>
         <FlatList
           data={pulpos}
+          keyExtractor={(item) => item._id}
           renderItem={({ item }) => (
             <Box
               borderBottomWidth="1"
@@ -98,7 +99,6 @@ export default function ListaPulpos({ navigation, route }) {
               </HStack>
             </Box>
           )}
-          keyExtractor={(item) => item.id}
         />
 
         <Button

@@ -34,13 +34,14 @@ export default function App() {
   const [auth, setAuth] = useState(authData);
 
   useEffect(useCallback(() => {
-    console.log("Aqui tengo que verificar si existe data en la cache del dispositivo");
+    console.log("Verifica si existe data en la cache del dispositivo para ver a que pantalla me envia login o home");
     AsyncStorage.getData('AuthData')
       .then(data => {
-        // console.log("Encontro data???", data);
+        console.log("aca la data esta vacia hasta que vas a login y haces el StoreData", data);
         if (data) {
           setAuth(data)
         }
+        console.log("App.js redirecciona a Login xq data = undefined", data);
       })
   }), [])
 
@@ -49,16 +50,14 @@ export default function App() {
     setTimeout(() => {
       if (auth) {
         AsyncStorage.storeData('AuthData', auth)
-        console.log("entra en Store DATA el segundo effect");
+        console.log("StoreData OK en App.js");
+        
+        console.log(auth)
       } else {
         AsyncStorage.clearAll()
       }
     });
   }), [auth])
-
-
-
-
 
   return (
       <Authcontext.Provider value={{auth, setAuth}}>
@@ -70,7 +69,7 @@ export default function App() {
                   <Stack.Screen name="Home" component={Home} />
                 </>
               ) : (
-                <Stack.Screen name="LoginG" component={LoginG} />
+                <Stack.Screen name="Login" component={LoginG} />
               )}
               <Stack.Screen name="ListaCuidadores" component={ListaCuidadores} />
               <Stack.Screen name="ListaTareas" component={ListaTareas} />

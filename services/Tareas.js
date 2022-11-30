@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-
-const BASE_URL = `https://0751-181-28-88-61.sa.ngrok.io/tareas`;
-
+import {BASE_URL} from "@env"
+//const BASE_URL= "https://5ba5-181-28-88-61.sa.ngrok.io"
 const getTareas = () => {
   return new Promise((resolve, reject) => {
-    fetch(`${BASE_URL}`)
+    console.log("entre en get")
+    fetch(`${BASE_URL}/tareas`)
       .then((res) => res.json())
       .then((data) => {
         return resolve(data);
@@ -14,8 +14,9 @@ const getTareas = () => {
 };
 
 const getTarea = (id) => {
+
   return new Promise((resolve, reject) => {
-    fetch(`${BASE_URL}/${id}`)
+    fetch(`${BASE_URL}/tareas/${id}`)
       .then((res) => res.json())
       .then((data) => {
         return resolve(data);
@@ -24,13 +25,15 @@ const getTarea = (id) => {
   });
 };
 const addTarea = (tarea) => {
+
   const option = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(tarea),
   };
   return new Promise((resolve, reject) => {
-    fetch(`${BASE_URL}`,option)
+    
+    fetch(`${BASE_URL}/tareas`,option)
       .then((res) => res.json())
       .then((data) => {
         return resolve(data);

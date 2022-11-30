@@ -53,6 +53,7 @@ export default function ListaCuidadores({ navigation, route }) {
         </Heading>
         <FlatList
           data={personas}
+          keyExtractor={item => item._id}
           renderItem={({ item }) => (
             <Box
               borderBottomWidth="1"
@@ -125,7 +126,6 @@ export default function ListaCuidadores({ navigation, route }) {
               </HStack>
             </Box>
           )}
-          keyExtractor={(item) => item.id}
         />
         <Box
           margin={1}

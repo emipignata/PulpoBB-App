@@ -40,6 +40,7 @@ export default function ListaGastos({ navigation, route }) {
         </Heading>
         <FlatList
           data={gastos}
+          keyExtractor={(item) => item._id}
           renderItem={({ item }) => (
             <Box
               borderBottomWidth="1"
@@ -108,7 +109,6 @@ export default function ListaGastos({ navigation, route }) {
               </HStack>
             </Box>
           )}
-          keyExtractor={(item) => item.id}
         />
         <Box margin={5}>
           <Button

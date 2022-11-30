@@ -1,6 +1,7 @@
-import { NativeBaseProvider, Button, Box,Text } from "native-base";
+import { NativeBaseProvider, Button, Box, Text } from "native-base";
 import { useContext, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
+import AsyncStorage from "../services/AsyncStorage";
 //import { Avatar, Divider } from '@rneui/themed';
 //import styles from "./styles";
 import Authcontext from "../services/Authcontext";
@@ -13,19 +14,16 @@ const Logout = ({ navigation, route }) => {
   }, []);
 
   const logout = () => {
+    //AsyncStorage.clearAll();
     setAuth(null);
+    console.log("ejecuto LOGOUT  auth:  >>>>", auth);
   };
 
   return (
     <View>
       <Button success title="Logout" margin={1} onPress={logout}>
-        <Text>Logout</Text>
+        <Text fontSize="xl">Logout</Text>
       </Button>
-
-      {/* <Button
-                title="Logout"
-                onPress={logout()}
-             /> */}
     </View>
   );
 };

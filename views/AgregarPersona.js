@@ -2,13 +2,11 @@ import {
   NativeBaseProvider,
   Box,
   Button,
-  HStack,
   Input,
   Stack,
-  Switch,
   Text,
 } from "native-base";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import personasService from "../services/Personas";
 
 export default function AgregarPersona({ navigation, route }) {
@@ -25,7 +23,7 @@ export default function AgregarPersona({ navigation, route }) {
   );
 
   const addPersona = () => {
-    console.log("Click en boton guardar persona");
+    setPersona({ ...persona, id: route.params._id })
     console.log(persona);
     personasService.addPersona(persona).then((res) => {
       console.log(res);
@@ -82,11 +80,11 @@ export default function AgregarPersona({ navigation, route }) {
           <Text>Cancelar</Text>
         </Button>
       </Box>
-      <Input
+      {/* <Input
             isDisabled
             placeholder="id *No es necesario completar"
             value={() => setPersona({ ...persona, id: route.params.id })}
-          />
+          /> */}
     </NativeBaseProvider>
   );
 }
